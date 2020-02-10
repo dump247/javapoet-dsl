@@ -14,12 +14,12 @@ import javax.lang.model.element.Modifier
 
 class JavaFileTest {
     @Test
-    fun testJavaFilePath() {
-        assertEquals("Baz.java", javaFilePath(ClassName.get("", "Baz")).toString())
-        assertEquals("com/Baz.java", javaFilePath(ClassName.get("com", "Baz")).toString())
-        assertEquals("com/foo/bar/Baz.java", javaFilePath(ClassName.get("com.foo.bar", "Baz")).toString())
+    fun testToPath() {
+        assertEquals("Baz.java", ClassName.get("", "Baz").toPath().toString())
+        assertEquals("com/Baz.java", ClassName.get("com", "Baz").toPath().toString())
+        assertEquals("com/foo/bar/Baz.java", ClassName.get("com.foo.bar", "Baz").toPath().toString())
 
-        assertThrows<IllegalArgumentException> { javaFilePath(ClassName.get("a.b.c", "Class", "Inner"))  }
+        assertThrows<IllegalStateException> { ClassName.get("a.b.c", "Class", "Inner").toPath() }
     }
 
     @Test

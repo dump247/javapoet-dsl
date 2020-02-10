@@ -26,7 +26,7 @@ class ClassSpec(val className: ClassName, val typeSpec: TypeSpec) {
     }
 
     val filePath: Path
-        get() = javaFilePath(className)
+        get() = className.toPath()
 
     fun toJavaFile(
             skipJavaLangImports: Boolean = false
