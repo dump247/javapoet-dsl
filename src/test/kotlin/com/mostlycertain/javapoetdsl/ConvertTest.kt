@@ -24,6 +24,15 @@ class ConvertTest {
     @Test
     fun `typeName maps types`() {
         assertEquals(ClassName.get(java.lang.String::class.java), typeName(String::class))
+        assertEquals(TypeName.INT, typeName(Integer::class))
+        assertEquals(TypeName.CHAR, typeName(Character::class))
+    }
+
+    @Test
+    fun `typeName maps boxed types`() {
+        assertEquals(ClassName.get(java.lang.String::class.java), typeName(String::class, boxed = true))
+        assertEquals(ClassName.get(java.lang.Integer::class.java), typeName(Int::class, boxed = true))
+        assertEquals(ClassName.get(java.lang.Character::class.java), typeName(Character::class, boxed = true))
     }
 
     @Test
