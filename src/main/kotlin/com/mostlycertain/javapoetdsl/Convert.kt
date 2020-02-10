@@ -18,6 +18,8 @@ fun typeName(class_: KClass<*>): TypeName = when (class_) {
     Int::class -> TypeName.INT
     Long::class -> TypeName.LONG
     Any::class -> TypeName.OBJECT
+    java.lang.Object::class -> TypeName.OBJECT
+    Void::class -> TypeName.VOID
     else -> ClassName.get(class_.java)
 }
 
