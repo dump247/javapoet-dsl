@@ -15,6 +15,7 @@ class JavaFileTest {
     @Test
     fun testJavaFilePath() {
         assertEquals("Baz.java", javaFilePath(ClassName.get("", "Baz")).toString())
+        assertEquals("com/Baz.java", javaFilePath(ClassName.get("com", "Baz")).toString())
         assertEquals("com/foo/bar/Baz.java", javaFilePath(ClassName.get("com.foo.bar", "Baz")).toString())
     }
 
@@ -64,10 +65,7 @@ class JavaFileTest {
             }
         }
 
-        val myClassStr = javaFileBuilder(myClass)
-                .skipJavaLangImports(true)
-                .build()
-                .writeToString()
+        val myClassStr = myClass.toJavaFile().writeToString()
 
         assertEquals("""
             package foo.bar.baz;
@@ -75,6 +73,10 @@ class JavaFileTest {
             import java.io.BufferedReader;
             import java.io.IOException;
             import java.io.InputStreamReader;
+            import java.lang.Exception;
+            import java.lang.IllegalArgumentException;
+            import java.lang.String;
+            import java.lang.StringBuilder;
             import java.net.MalformedURLException;
             import java.net.URL;
             import java.net.URLConnection;

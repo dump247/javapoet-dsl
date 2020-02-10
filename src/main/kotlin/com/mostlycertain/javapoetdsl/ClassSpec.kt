@@ -4,18 +4,37 @@ import com.squareup.javapoet.AnnotationSpec
 import com.squareup.javapoet.ClassName
 import com.squareup.javapoet.CodeBlock
 import com.squareup.javapoet.FieldSpec
+import com.squareup.javapoet.JavaFile
 import com.squareup.javapoet.MethodSpec
 import com.squareup.javapoet.ParameterSpec
 import com.squareup.javapoet.TypeName
 import com.squareup.javapoet.TypeSpec
 import java.lang.reflect.Type
+import java.nio.file.Path
 import javax.lang.model.element.Modifier
 import kotlin.reflect.KClass
 
 typealias ClassSpecFunc = ClassSpecBuilder.() -> Unit
 
 class ClassSpec(val className: ClassName, val typeSpec: TypeSpec) {
-    override fun toString() = typeSpec.toString()
+    override fun toString(): String {
+        return if (className.packageName().isEmpty()) {
+            typeSpec.toString()
+        } else {
+            "package ${className.packageName()};\n\n${typeSpec}"
+        }
+    }
+
+    val filePath: Path
+        get() = javaFilePath(className)
+
+    fun toJavaFile(
+            skipJavaLangImports: Boolean = false
+    ): JavaFile {
+        return JavaFile.builder(className.packageName(), typeSpec)
+                .skipJavaLangImports(skipJavaLangImports)
+                .build()
+    }
 }
 
 fun classSpec(

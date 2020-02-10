@@ -1,9 +1,11 @@
 package com.mostlycertain.javapoetdsl
 
+import com.squareup.javapoet.ClassName
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.io.BufferedReader
 import java.io.IOException
+import java.io.InputStream
 import java.io.InputStreamReader
 import java.net.MalformedURLException
 import java.net.URL
@@ -14,7 +16,7 @@ import javax.lang.model.element.Modifier.PRIVATE
 
 class ClassSpecTest {
     @Test
-    fun `example in readme`() {
+    fun `toString with example in readme`() {
         val myClass = classSpec("MyClass", listOf(PUBLIC, FINAL)) {
             fieldDecl(Int::class, "foo", listOf(PRIVATE))
 
@@ -96,5 +98,67 @@ class ClassSpecTest {
             }
 
         """.trimIndent(), myClass.toString())
+    }
+
+    @Test
+    fun `toString with class package`() {
+        val myClass = classSpec(ClassName.get("a.b.c", "MyClass")) {
+            fieldDecl(String::class, "fieldName")
+            fieldDecl(InputStream::class, "stream")
+        }
+
+        assertEquals("""
+            package a.b.c;
+            
+            class MyClass {
+              java.lang.String fieldName;
+
+              java.io.InputStream stream;
+            }
+
+        """.trimIndent(), myClass.toString())
+    }
+
+    @Test
+    fun `toJavaFile with defaults`() {
+        val myClass = classSpec(ClassName.get("a.b.c", "MyClass")) {
+            fieldDecl(String::class, "fieldName")
+            fieldDecl(InputStream::class, "stream")
+        }
+
+        assertEquals("""
+            package a.b.c;
+
+            import java.io.InputStream;
+            import java.lang.String;
+
+            class MyClass {
+              String fieldName;
+
+              InputStream stream;
+            }
+
+        """.trimIndent(), myClass.toJavaFile().writeToString())
+    }
+
+    @Test
+    fun `toJavaFile with skip java lang imports`() {
+        val myClass = classSpec(ClassName.get("a.b.c", "MyClass")) {
+            fieldDecl(String::class, "fieldName")
+            fieldDecl(InputStream::class, "stream")
+        }
+
+        assertEquals("""
+            package a.b.c;
+            
+            import java.io.InputStream;
+
+            class MyClass {
+              String fieldName;
+
+              InputStream stream;
+            }
+
+        """.trimIndent(), myClass.toJavaFile(skipJavaLangImports = true).writeToString())
     }
 }
