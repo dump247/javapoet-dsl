@@ -3,6 +3,7 @@ package com.mostlycertain.javapoetdsl
 import com.squareup.javapoet.ClassName
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
@@ -17,6 +18,8 @@ class JavaFileTest {
         assertEquals("Baz.java", javaFilePath(ClassName.get("", "Baz")).toString())
         assertEquals("com/Baz.java", javaFilePath(ClassName.get("com", "Baz")).toString())
         assertEquals("com/foo/bar/Baz.java", javaFilePath(ClassName.get("com.foo.bar", "Baz")).toString())
+
+        assertThrows<IllegalArgumentException> { javaFilePath(ClassName.get("a.b.c", "Class", "Inner"))  }
     }
 
     @Test

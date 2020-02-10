@@ -10,9 +10,9 @@ import java.io.InputStreamReader
 import java.net.MalformedURLException
 import java.net.URL
 import java.net.URLConnection
-import javax.lang.model.element.Modifier.PUBLIC
 import javax.lang.model.element.Modifier.FINAL
 import javax.lang.model.element.Modifier.PRIVATE
+import javax.lang.model.element.Modifier.PUBLIC
 
 class ClassSpecTest {
     @Test
@@ -160,5 +160,18 @@ class ClassSpecTest {
             }
 
         """.trimIndent(), myClass.toJavaFile(skipJavaLangImports = true).writeToString())
+    }
+
+    @Test
+    fun testFilePath() {
+        assertEquals(
+                "MyClass.java",
+                classSpec("MyClass") {
+                }.filePath.toString())
+
+        assertEquals(
+                "a/b/c/MyClass.java",
+                classSpec(ClassName.get("a.b.c", "MyClass")) {
+                }.filePath.toString())
     }
 }
