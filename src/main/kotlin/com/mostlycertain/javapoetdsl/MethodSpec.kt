@@ -12,7 +12,7 @@ import kotlin.reflect.KClass
 typealias MethodCodeFunc = MethodCodeBuilder.() -> Unit
 
 private fun methodSpecInternal(
-        returns: TypeName? = null,
+        returns: TypeName,
         name: String,
         parameters: List<ParameterSpec> = emptyList(),
         modifiers: List<Modifier> = emptyList(),
@@ -23,15 +23,12 @@ private fun methodSpecInternal(
 ): MethodSpec {
     val methodBuilder = MethodSpec
             .methodBuilder(name)
+            .returns(returns)
             .addParameters(parameters)
             .addModifiers(modifiers)
             .addAnnotations(annotations)
             .addExceptions(exceptions)
             .varargs(varargs)
-
-    if (returns != null) {
-        methodBuilder.returns(returns)
-    }
 
     val code = CodeBlock.builder()
     val builder = MethodCodeBuilder(MethodMeta(name, returns, parameters, modifiers, annotations, varargs), code)
@@ -50,7 +47,7 @@ fun methodSpec(
         throws: List<TypeName> = emptyList(),
         varargs: Boolean = false,
         block: MethodCodeFunc
-) = methodSpecInternal(null, name, parameters, modifiers, annotations, throws, varargs, block)
+) = methodSpecInternal(TypeName.VOID, name, parameters, modifiers, annotations, throws, varargs, block)
 
 fun methodSpec(
         returns: TypeName,
@@ -87,7 +84,7 @@ fun methodSpec(
 
 data class MethodMeta(
         val name: String,
-        val returns: TypeName?,
+        val returns: TypeName,
         val parameters: List<ParameterSpec>,
         val modifiers: List<Modifier>,
         val annotations: List<AnnotationSpec>,
