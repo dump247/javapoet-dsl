@@ -32,4 +32,4 @@ fun parameterSpec(
         name: String,
         final: Boolean = true,
         annotations: List<AnnotationSpec> = emptyList()
-) = parameterSpec(typeName(type), name, final, annotations)
+) = parameterSpec(TypeNames.of(type), name, final, annotations)

@@ -1,6 +1,5 @@
 package com.mostlycertain.javapoetdsl
 
-import com.squareup.javapoet.ClassName
 import com.squareup.javapoet.CodeBlock
 import com.squareup.javapoet.TypeName
 import java.lang.reflect.Type
@@ -112,7 +111,7 @@ open class CodeBuilder(private val code: CodeBlock.Builder) {
      *
      * @see [v]
      */
-    fun variableDecl(type: KClass<*>, name: String, initializer: CodeExpression? = null, final: Boolean = false) = variableDecl(typeName(type), name, initializer, final)
+    fun variableDecl(type: KClass<*>, name: String, initializer: CodeExpression? = null, final: Boolean = false) = variableDecl(TypeNames.of(type), name, initializer, final)
 
     /**
      * Short alias for [variableDecl].
@@ -127,7 +126,7 @@ open class CodeBuilder(private val code: CodeBlock.Builder) {
     /**
      * Short alias for [variableDecl].
      */
-    fun v(type: KClass<*>, name: String, initializer: CodeExpression? = null, final: Boolean = false) = variableDecl(typeName(type), name, initializer, final)
+    fun v(type: KClass<*>, name: String, initializer: CodeExpression? = null, final: Boolean = false) = variableDecl(TypeNames.of(type), name, initializer, final)
 
     private fun <T : Flow> beginFlow(flow: T, controlFlow: String, args: Array<out Any>, block: CodeFunc): T {
         endCurrentFlow()
@@ -202,7 +201,7 @@ open class CodeBuilder(private val code: CodeBlock.Builder) {
 
     fun forEachDecl(variableType: Type, variableName: String, collection: CodeExpression, block: CodeFunc) = forEachDecl(TypeName.get(variableType), variableName, collection, block)
 
-    fun forEachDecl(variableType: KClass<*>, variableName: String, collection: CodeExpression, block: CodeFunc) = forEachDecl(typeName(variableType), variableName, collection, block)
+    fun forEachDecl(variableType: KClass<*>, variableName: String, collection: CodeExpression, block: CodeFunc) = forEachDecl(TypeNames.of(variableType), variableName, collection, block)
 
     fun whileDecl(condition: CodeExpression, block: CodeFunc) {
         endCurrentFlow()
@@ -291,7 +290,7 @@ open class CodeBuilder(private val code: CodeBlock.Builder) {
          * @param type Exception type to catch.
          * @param variableName Exception variable name.
          */
-        fun catchDecl(type: KClass<out Throwable>, variableName: String, block: CodeFunc) = catchDecl(listOf(typeName(type)), variableName, block)
+        fun catchDecl(type: KClass<out Throwable>, variableName: String, block: CodeFunc) = catchDecl(TypeNames.types(type), variableName, block)
 
         /**
          * Render a "finally" block.

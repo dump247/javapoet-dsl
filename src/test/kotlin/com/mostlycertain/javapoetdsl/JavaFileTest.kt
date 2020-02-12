@@ -40,7 +40,7 @@ class JavaFileTest {
                     name = "requestData",
                     parameters = listOf(parameterSpec(String::class, "urlStr")),
                     modifiers = listOf(Modifier.PUBLIC),
-                    exceptions = typeList(IOException::class)
+                    exceptions = TypeNames.types(IOException::class)
             ) {
                 v(StringBuilder::class, "content", e("new StringBuilder()"))
                 v(BufferedReader::class, "bufferedReader", literalNull())

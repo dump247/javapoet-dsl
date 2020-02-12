@@ -83,7 +83,7 @@ fun methodSpec(
         exceptions: List<TypeName> = emptyList(),
         varargs: Boolean = false,
         block: MethodCodeFunc
-) = methodSpecInternal(typeName(returns), name, parameters, modifiers, annotations, exceptions, varargs, block)
+) = methodSpecInternal(TypeNames.of(returns), name, parameters, modifiers, annotations, exceptions, varargs, block)
 
 data class MethodMeta(
         val name: String,

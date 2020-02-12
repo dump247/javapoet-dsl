@@ -42,4 +42,4 @@ fun fieldSpec(
         modifiers: List<Modifier> = emptyList(),
         annotations: List<AnnotationSpec> = emptyList(),
         initializer: CodeExpression? = null
-) = fieldSpec(typeName(type), name, modifiers, annotations, initializer)
+) = fieldSpec(TypeNames.of(type), name, modifiers, annotations, initializer)
