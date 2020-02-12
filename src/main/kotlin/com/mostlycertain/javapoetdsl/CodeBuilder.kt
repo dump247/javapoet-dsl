@@ -186,9 +186,9 @@ open class CodeBuilder(private val code: CodeBlock.Builder) {
     fun blockDecl(block: CodeFunc) {
         endCurrentFlow()
 
-        code.add("{\n").indent();
+        code.add("{\n").indent()
         buildBlock(code, block)
-        code.unindent().add("}\n");
+        code.unindent().add("}\n")
     }
 
     fun forEachDecl(variableType: TypeName, variableName: String, collection: CodeExpression, block: CodeFunc) {

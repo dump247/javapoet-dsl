@@ -89,7 +89,7 @@ class ClassSpecBuilder(
             annotations: List<AnnotationSpec> = emptyList(),
             initializer: CodeExpression? = null
     ): FieldSpec {
-        val fieldSpec = fieldSpec(type, name, modifiers, annotations, initializer);
+        val fieldSpec = fieldSpec(type, name, modifiers, annotations, initializer)
         spec.addField(fieldSpec)
         return fieldSpec
     }
@@ -101,7 +101,7 @@ class ClassSpecBuilder(
             annotations: List<AnnotationSpec> = emptyList(),
             initializer: CodeExpression? = null
     ): FieldSpec {
-        val fieldSpec = fieldSpec(type, name, modifiers, annotations, initializer);
+        val fieldSpec = fieldSpec(type, name, modifiers, annotations, initializer)
         spec.addField(fieldSpec)
         return fieldSpec
     }
@@ -113,7 +113,7 @@ class ClassSpecBuilder(
             annotations: List<AnnotationSpec> = emptyList(),
             initializer: CodeExpression? = null
     ): FieldSpec {
-        val fieldSpec = fieldSpec(type, name, modifiers, annotations, initializer);
+        val fieldSpec = fieldSpec(type, name, modifiers, annotations, initializer)
         spec.addField(fieldSpec)
         return fieldSpec
     }
