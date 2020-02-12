@@ -16,12 +16,12 @@ import javax.lang.model.element.Modifier
 
 class JavapoetExtensionsTest {
     @Test
-    fun testToPath() {
-        assertEquals("Baz.java", ClassName.get("", "Baz").toPath().toString())
-        assertEquals("com/Baz.java", ClassName.get("com", "Baz").toPath().toString())
-        assertEquals("com/foo/bar/Baz.java", ClassName.get("com.foo.bar", "Baz").toPath().toString())
+    fun testToFilePath() {
+        assertEquals("Baz.java", ClassName.get("", "Baz").toFilePath().toString())
+        assertEquals("com/Baz.java", ClassName.get("com", "Baz").toFilePath().toString())
+        assertEquals("com/foo/bar/Baz.java", ClassName.get("com.foo.bar", "Baz").toFilePath().toString())
 
-        assertThrows<IllegalStateException> { ClassName.get("a.b.c", "Class", "Inner").toPath() }
+        assertThrows<IllegalStateException> { ClassName.get("a.b.c", "Class", "Inner").toFilePath() }
     }
 
     @Test

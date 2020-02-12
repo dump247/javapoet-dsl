@@ -11,7 +11,7 @@ fun TypeName.ensureBoxed(): TypeName = if (isPrimitive) box() else this
 
 fun TypeName.ensureUnboxed(): TypeName = if (isBoxedPrimitive) unbox() else this
 
-fun ClassName.toPath(): Path {
+fun ClassName.toFilePath(): Path {
     if (enclosingClassName() != null) {
         throw IllegalStateException("Can not generate a path for an inner class: $this")
     }
