@@ -1,5 +1,6 @@
 package com.mostlycertain.javapoetdsl
 
+import com.squareup.javapoet.ArrayTypeName
 import com.squareup.javapoet.ClassName
 import com.squareup.javapoet.ParameterizedTypeName
 import com.squareup.javapoet.TypeName
@@ -78,6 +79,10 @@ object TypeNames {
     }
 
     fun types(vararg classes: KClass<*>): List<TypeName> = classes.map(TypeNames::of)
+
+    fun arrayType(componentType: KClass<*>): ArrayTypeName {
+        return ArrayTypeName.of(of(componentType))
+    }
 
     fun optionalType(typeArgument: KClass<*>): ParameterizedTypeName {
         return optionalType(of(typeArgument))
