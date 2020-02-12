@@ -1,5 +1,6 @@
 package com.mostlycertain.javapoetdsl
 
+import com.mostlycertain.javapoetdsl.TypeNames.types
 import com.squareup.javapoet.ClassName
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -33,7 +34,7 @@ class ClassSpecTest {
                     name = "requestData",
                     parameters = listOf(parameterSpec(String::class, "urlStr")),
                     modifiers = listOf(PUBLIC),
-                    exceptions = TypeNames.types(IOException::class)
+                    throws = types(IOException::class)
             ) {
                 v(StringBuilder::class, "content", e("new StringBuilder()"))
                 v(BufferedReader::class, "bufferedReader", literalNull())

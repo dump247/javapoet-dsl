@@ -47,10 +47,10 @@ fun methodSpec(
         parameters: List<ParameterSpec> = emptyList(),
         modifiers: List<Modifier> = emptyList(),
         annotations: List<AnnotationSpec> = emptyList(),
-        exceptions: List<TypeName> = emptyList(),
+        throws: List<TypeName> = emptyList(),
         varargs: Boolean = false,
         block: MethodCodeFunc
-) = methodSpecInternal(null, name, parameters, modifiers, annotations, exceptions, varargs, block)
+) = methodSpecInternal(null, name, parameters, modifiers, annotations, throws, varargs, block)
 
 fun methodSpec(
         returns: TypeName,
@@ -58,10 +58,10 @@ fun methodSpec(
         parameters: List<ParameterSpec> = emptyList(),
         modifiers: List<Modifier> = emptyList(),
         annotations: List<AnnotationSpec> = emptyList(),
-        exceptions: List<TypeName> = emptyList(),
+        throws: List<TypeName> = emptyList(),
         varargs: Boolean = false,
         block: MethodCodeFunc
-) = methodSpecInternal(returns, name, parameters, modifiers, annotations, exceptions, varargs, block)
+) = methodSpecInternal(returns, name, parameters, modifiers, annotations, throws, varargs, block)
 
 fun methodSpec(
         returns: Type,
@@ -69,10 +69,10 @@ fun methodSpec(
         parameters: List<ParameterSpec> = emptyList(),
         modifiers: List<Modifier> = emptyList(),
         annotations: List<AnnotationSpec> = emptyList(),
-        exceptions: List<TypeName> = emptyList(),
+        throws: List<TypeName> = emptyList(),
         varargs: Boolean = false,
         block: MethodCodeFunc
-) = methodSpecInternal(TypeName.get(returns), name, parameters, modifiers, annotations, exceptions, varargs, block)
+) = methodSpecInternal(TypeName.get(returns), name, parameters, modifiers, annotations, throws, varargs, block)
 
 fun methodSpec(
         returns: KClass<*>,
@@ -80,10 +80,10 @@ fun methodSpec(
         parameters: List<ParameterSpec> = emptyList(),
         modifiers: List<Modifier> = emptyList(),
         annotations: List<AnnotationSpec> = emptyList(),
-        exceptions: List<TypeName> = emptyList(),
+        throws: List<TypeName> = emptyList(),
         varargs: Boolean = false,
         block: MethodCodeFunc
-) = methodSpecInternal(TypeNames.of(returns), name, parameters, modifiers, annotations, exceptions, varargs, block)
+) = methodSpecInternal(TypeNames.of(returns), name, parameters, modifiers, annotations, throws, varargs, block)
 
 data class MethodMeta(
         val name: String,

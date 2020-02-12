@@ -9,6 +9,8 @@ fun TypeName.ensureBoxed(): TypeName = if (isPrimitive) box() else this
 
 fun TypeName.ensureUnboxed(): TypeName = if (isBoxedPrimitive) unbox() else this
 
+fun List<KClass<*>>.toTypeNames(): List<TypeName> = this.map(TypeNames::of)
+
 object TypeNames {
     val PARAMETERS_ARE_NONNULL_BY_DEFAULT: ClassName = ClassName.get(
             "javax.annotation",
@@ -82,8 +84,6 @@ object TypeNames {
     }
 
     fun types(vararg classes: KClass<*>): List<TypeName> = classes.map(TypeNames::of)
-
-    fun types(classes: List<KClass<*>>): List<TypeName> = classes.map(TypeNames::of)
 
     fun optionalType(typeArgument: KClass<*>): ParameterizedTypeName {
         return optionalType(of(typeArgument))
