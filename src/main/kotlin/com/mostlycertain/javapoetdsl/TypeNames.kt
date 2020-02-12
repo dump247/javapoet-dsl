@@ -5,12 +5,6 @@ import com.squareup.javapoet.ParameterizedTypeName
 import com.squareup.javapoet.TypeName
 import kotlin.reflect.KClass
 
-fun TypeName.ensureBoxed(): TypeName = if (isPrimitive) box() else this
-
-fun TypeName.ensureUnboxed(): TypeName = if (isBoxedPrimitive) unbox() else this
-
-fun List<KClass<*>>.toTypeNames(): List<TypeName> = this.map(TypeNames::of)
-
 object TypeNames {
     val PARAMETERS_ARE_NONNULL_BY_DEFAULT: ClassName = ClassName.get(
             "javax.annotation",

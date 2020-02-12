@@ -2,6 +2,7 @@ package com.mostlycertain.javapoetdsl
 
 import com.mostlycertain.javapoetdsl.TypeNames.types
 import com.squareup.javapoet.ClassName
+import com.squareup.javapoet.TypeName
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -13,7 +14,7 @@ import java.net.URL
 import java.net.URLConnection
 import javax.lang.model.element.Modifier
 
-class JavaFileTest {
+class JavapoetExtensionsTest {
     @Test
     fun testToPath() {
         assertEquals("Baz.java", ClassName.get("", "Baz").toPath().toString())
@@ -121,5 +122,19 @@ class JavaFileTest {
             }
 
         """.trimIndent(), myClassStr)
+    }
+
+    @Test
+    fun `ensureBoxed maps boxed types`() {
+        assertEquals(ClassName.get(java.lang.String::class.java), ClassName.get(String::class.java).ensureBoxed())
+        assertEquals(ClassName.get(Integer::class.java), TypeName.INT.ensureBoxed())
+        assertEquals(ClassName.get(Character::class.java), TypeName.CHAR.ensureBoxed())
+    }
+
+    @Test
+    fun `ensureUnboxed maps boxed types`() {
+        assertEquals(ClassName.get(java.lang.String::class.java), ClassName.get(String::class.java).ensureUnboxed())
+        assertEquals(TypeName.INT, ClassName.get(Integer::class.java).ensureUnboxed())
+        assertEquals(TypeName.CHAR, ClassName.get(Character::class.java).ensureUnboxed())
     }
 }
