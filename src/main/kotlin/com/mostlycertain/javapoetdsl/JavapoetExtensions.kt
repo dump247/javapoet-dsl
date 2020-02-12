@@ -19,6 +19,12 @@ fun TypeName.ensureBoxed(): TypeName = if (isPrimitive) box() else this
 fun TypeName.ensureUnboxed(): TypeName = if (isBoxedPrimitive) unbox() else this
 
 /**
+ * True if the class name is a nested class.
+ */
+val ClassName.isNested: Boolean
+    get() = enclosingClassName() != null
+
+/**
  * Convert a non-nested class name to a java file path.
  *
  * Example:
@@ -27,7 +33,7 @@ fun TypeName.ensureUnboxed(): TypeName = if (isBoxedPrimitive) unbox() else this
  * @throws IllegalStateException if this class name is a nested class
  */
 fun ClassName.toFilePath(): Path {
-    if (enclosingClassName() != null) {
+    if (isNested) {
         throw IllegalStateException("Can not generate a path for an inner class: $this")
     }
 

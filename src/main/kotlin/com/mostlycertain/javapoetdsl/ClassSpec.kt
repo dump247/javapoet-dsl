@@ -31,6 +31,10 @@ class ClassSpec(val className: ClassName, val typeSpec: TypeSpec) {
     fun toJavaFile(
             skipJavaLangImports: Boolean = false
     ): JavaFile {
+        if (className.isNested) {
+            throw IllegalStateException("Can not generate a java file for an inner class: $className")
+        }
+
         return JavaFile.builder(className.packageName(), typeSpec)
                 .skipJavaLangImports(skipJavaLangImports)
                 .build()
