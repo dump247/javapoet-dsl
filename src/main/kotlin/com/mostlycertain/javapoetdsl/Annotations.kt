@@ -20,7 +20,7 @@ object Annotations {
 
     val CHECK_RETURN_VALUE = of(TypeNames.CHECK_RETURN_VALUE)
 
-    val SUPPRESS_ALL_WARNINGS = of(TypeNames.SUPPRESS_WARNINGS, "all")
+    val SUPPRESS_ALL_WARNINGS = suppressWarnings("all")
 
     /**
      * Build a [javax.annotation.Generated] annotation.
@@ -45,6 +45,17 @@ object Annotations {
         }
 
         return builder.build()
+    }
+
+    fun suppressWarnings(vararg warnings: String): AnnotationSpec = suppressWarnings(warnings.toList())
+
+    fun suppressWarnings(warnings: List<String>): AnnotationSpec {
+        val format = if (warnings.size == 1) "\$S" else "{${warnings.joinToString(", ") { "\$S" }}}"
+
+        return AnnotationSpec
+                .builder(TypeNames.SUPPRESS_WARNINGS)
+                .addMember("value", format, *warnings.toTypedArray())
+                .build()
     }
 
     private fun of(type: ClassName): AnnotationSpec = AnnotationSpec.builder(type).build()
