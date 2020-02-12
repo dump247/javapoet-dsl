@@ -30,7 +30,7 @@ object Annotations {
      * @param comments Any comments that the code generator may want to include in the generated code.
      */
     fun generated(generatorName: String, generatedAt: Instant? = null, comments: String = ""): AnnotationSpec {
-        check(generatorName.isNotBlank())
+        require(generatorName.isNotBlank())
 
         val builder = AnnotationSpec
                 .builder(TypeNames.GENERATED)
