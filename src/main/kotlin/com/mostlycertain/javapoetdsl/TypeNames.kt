@@ -21,7 +21,9 @@ object TypeNames {
 
     val MAP = className("java.util", "Map")
 
-    val GENERATED = className("javax.annotation", "Generated")
+    val GENERATED_JDK8 = className("javax.annotation", "Generated")
+
+    val GENERATED_JDK9 = className("javax.annotation.processing", "Generated")
 
     val FUNCTIONAL_INTERFACE = className("java.lang", "FunctionalInterface")
 

@@ -34,17 +34,26 @@ object Annotations {
     }
 
     /**
-     * Build a [javax.annotation.Generated] annotation.
+     * Build an annotation that marks a type as generated.
+     *
+     * The resulting annotation is [javax.annotation.Generated] for java versions <= 8 and
+     * [javax.annotation.processing.Generated] for java versions >= 9.
      *
      * @param generatorName Fully qualified name of the code generator.
      * @param generatedAt Date and time when the code was generated.
      * @param comments Any comments that the code generator may want to include in the generated code.
+     * @param targetVersion Java version to generate the annotation for
      */
-    fun generated(generatorName: String, generatedAt: Instant? = null, comments: String = ""): AnnotationSpec {
+    fun generated(
+            generatorName: String,
+            generatedAt: Instant? = null,
+            comments: String = "",
+            targetVersion: JavaVersion = JavaVersion.VERSION_1_9
+    ): AnnotationSpec {
         require(generatorName.isNotBlank())
 
         val builder = AnnotationSpec
-                .builder(TypeNames.GENERATED)
+                .builder(if (targetVersion.majorVersion <= 8) TypeNames.GENERATED_JDK8 else TypeNames.GENERATED_JDK9)
                 .addMember("value", "\$S", generatorName)
 
         if (generatedAt != null) {
