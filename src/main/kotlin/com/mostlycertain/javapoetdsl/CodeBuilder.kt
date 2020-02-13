@@ -152,6 +152,15 @@ open class CodeBuilder(private val code: CodeBlock.Builder) {
      *      }.elseDecl {
      *          s("return C")
      *      }
+     *
+     *     // -- Result --
+     *     // if (var == otherVar) {
+     *     //   return A;
+     *     // } else if (var == null) {
+     *     //   return B;
+     *     // } else {
+     *     //   return C;
+     *     // }
      */
     fun ifDecl(conditionFormat: String, vararg conditionArgs: Any, block: CodeFunc) = ifDecl(expression(conditionFormat, *conditionArgs), block)
 
@@ -167,11 +176,22 @@ open class CodeBuilder(private val code: CodeBlock.Builder) {
      *          s("foo()")
      *      }.catchDecl(IllegalArgumentException::class, "ex") {
      *          s("bar()")
-     *      }.catchDecl(listOf(NullPointerException::class, IllegalStateException::class), "ex") {
+     *      }.catchDecl(types(NullPointerException::class, IllegalStateException::class), "ex") {
      *          s("bar()")
      *      }.finallyDecl {
      *          s("cleanup()")
      *      }
+     *
+     *     // -- Result --
+     *     // try {
+     *     //   foo();
+     *     // } catch (final IllegalArgumentException ex) {
+     *     //   bar();
+     *     // } catch (final NullPointerException | IllegalStateException ex) {
+     *     //   bar();
+     *     // } finally {
+     *     //   cleanup();
+     *     // }
      */
     fun tryDecl(block: CodeFunc): TryFlow = beginFlow(TryFlow(), "try", emptyArray(), block)
 
@@ -180,8 +200,13 @@ open class CodeBuilder(private val code: CodeBlock.Builder) {
      *
      * Example:
      *     blockDecl {
-     *         s("int v")
+     *         s("int v = 7")
      *     }
+     *
+     *     // -- Result --
+     *     // {
+     *     //   int v = 7;
+     *     // }
      */
     fun blockDecl(block: CodeFunc) {
         endCurrentFlow()
