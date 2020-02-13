@@ -23,6 +23,10 @@ object TypeNames {
 
     val GENERATED = className("javax.annotation", "Generated")
 
+    val FUNCTIONAL_INTERFACE = className("java.lang", "FunctionalInterface")
+
+    val SAFE_VARARGS = className("java.lang", "SafeVarargs")
+
     fun className(packageName: String, simpleName: String, vararg simpleNames: String): ClassName = ClassName.get(packageName, simpleName, *simpleNames)
 
     fun of(class_: KClass<*>): TypeName {

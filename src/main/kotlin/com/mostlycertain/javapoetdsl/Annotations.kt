@@ -10,6 +10,10 @@ object Annotations {
 
     val OVERRIDE = of(TypeNames.OVERRIDE)
 
+    val FUNCTIONAL_INTERFACE = of(TypeNames.FUNCTIONAL_INTERFACE)
+
+    val SAFE_VARARGS = of(TypeNames.SAFE_VARARGS)
+
     val SUPPRESS_ALL_WARNINGS = suppressWarnings("all")
 
     fun suppressWarnings(vararg warnings: String): AnnotationSpec = suppressWarnings(warnings.toList())
