@@ -21,8 +21,23 @@ object TypeNames {
 
     val MAP = className("java.util", "Map")
 
+    /**
+     * Annotation used to mark source code as generated.
+     *
+     * Available in JDK7 and removed in JDK9.
+     *
+     * @see GENERATED_JDK9
+     * @see Annotations.generated
+     */
     val GENERATED_JDK8 = className("javax.annotation", "Generated")
 
+    /**
+     * Annotation used to mark source code as generated.
+     *
+     * Introduced in JDK9 as a replacement for [GENERATED_JDK8].
+     *
+     * @see Annotations.generated
+     */
     val GENERATED_JDK9 = className("javax.annotation.processing", "Generated")
 
     val FUNCTIONAL_INTERFACE = className("java.lang", "FunctionalInterface")
