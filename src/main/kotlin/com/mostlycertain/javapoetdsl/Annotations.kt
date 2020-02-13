@@ -6,21 +6,28 @@ import java.time.Instant
 import java.time.format.DateTimeFormatter
 
 object Annotations {
-    val PARAMETERS_ARE_NONNULL_BY_DEFAULT = of(TypeNames.PARAMETERS_ARE_NONNULL_BY_DEFAULT)
-
-    val NULLABLE = of(TypeNames.NULLABLE)
-
-    val NONNULL = of(TypeNames.NONNULL)
-
     val DEPRECATED = of(TypeNames.DEPRECATED)
 
     val OVERRIDE = of(TypeNames.OVERRIDE)
 
-    val IMMUTABLE = of(TypeNames.IMMUTABLE)
-
-    val CHECK_RETURN_VALUE = of(TypeNames.CHECK_RETURN_VALUE)
-
     val SUPPRESS_ALL_WARNINGS = suppressWarnings("all")
+
+    fun suppressWarnings(vararg warnings: String): AnnotationSpec = suppressWarnings(warnings.toList())
+
+    fun suppressWarnings(warnings: List<String>): AnnotationSpec {
+        val format = if (warnings.size == 1) "\$S" else "{${warnings.joinToString(", ") { "\$S" }}}"
+
+        return AnnotationSpec
+                .builder(TypeNames.SUPPRESS_WARNINGS)
+                .addMember("value", format, *warnings.toTypedArray())
+                .build()
+    }
+
+    fun of(type: ClassName): AnnotationSpec = AnnotationSpec.builder(type).build()
+
+    fun of(type: ClassName, valueFormat: String, vararg valueArgs: Any): AnnotationSpec {
+        return AnnotationSpec.builder(type).addMember("value", valueFormat, *valueArgs).build()
+    }
 
     /**
      * Build a [javax.annotation.Generated] annotation.
@@ -45,22 +52,5 @@ object Annotations {
         }
 
         return builder.build()
-    }
-
-    fun suppressWarnings(vararg warnings: String): AnnotationSpec = suppressWarnings(warnings.toList())
-
-    fun suppressWarnings(warnings: List<String>): AnnotationSpec {
-        val format = if (warnings.size == 1) "\$S" else "{${warnings.joinToString(", ") { "\$S" }}}"
-
-        return AnnotationSpec
-                .builder(TypeNames.SUPPRESS_WARNINGS)
-                .addMember("value", format, *warnings.toTypedArray())
-                .build()
-    }
-
-    private fun of(type: ClassName): AnnotationSpec = AnnotationSpec.builder(type).build()
-
-    private fun of(type: ClassName, valueFormat: String, vararg valueArgs: Any): AnnotationSpec {
-        return AnnotationSpec.builder(type).addMember("value", valueFormat, *valueArgs).build()
     }
 }

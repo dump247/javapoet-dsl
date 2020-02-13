@@ -7,57 +7,23 @@ import com.squareup.javapoet.TypeName
 import kotlin.reflect.KClass
 
 object TypeNames {
-    val PARAMETERS_ARE_NONNULL_BY_DEFAULT: ClassName = ClassName.get(
-            "javax.annotation",
-            "ParametersAreNonnullByDefault")
+    val DEPRECATED = className("java.lang", "Deprecated")
 
-    val NULLABLE: ClassName = ClassName.get(
-            "javax.annotation",
-            "Nullable")
+    val OVERRIDE = className("java.lang", "Override")
 
-    val NONNULL: ClassName = ClassName.get(
-            "javax.annotation",
-            "Nonnull")
+    val SUPPRESS_WARNINGS = className("java.lang", "SuppressWarnings")
 
-    val DEPRECATED: ClassName = ClassName.get(
-            "java.lang",
-            "Deprecated")
+    val OPTIONAL = className("java.util", "Optional")
 
-    val OVERRIDE: ClassName = ClassName.get(
-            "java.lang",
-            "Override")
+    val LIST = className("java.util", "List")
 
-    val SUPPRESS_WARNINGS: ClassName = ClassName.get(
-            "java.lang",
-            "SuppressWarnings")
+    val SET = className("java.util", "Set")
 
-    val IMMUTABLE: ClassName = ClassName.get(
-            "javax.annotation.concurrent",
-            "Immutable")
+    val MAP = className("java.util", "Map")
 
-    val CHECK_RETURN_VALUE: ClassName = ClassName.get(
-            "javax.annotation",
-            "CheckReturnValue")
+    val GENERATED = className("javax.annotation", "Generated")
 
-    val GENERATED: ClassName = ClassName.get(
-            "javax.annotation",
-            "Generated")
-
-    val OPTIONAL: ClassName = ClassName.get(
-            "java.util",
-            "Optional")
-
-    val LIST: ClassName = ClassName.get(
-            "java.util",
-            "List")
-
-    val SET: ClassName = ClassName.get(
-            "java.util",
-            "Set")
-
-    val MAP: ClassName = ClassName.get(
-            "java.util",
-            "Map")
+    fun className(packageName: String, simpleName: String, vararg simpleNames: String): ClassName = ClassName.get(packageName, simpleName, *simpleNames)
 
     fun of(class_: KClass<*>): TypeName {
         // TODO return constant types declared in [TypeNames]?

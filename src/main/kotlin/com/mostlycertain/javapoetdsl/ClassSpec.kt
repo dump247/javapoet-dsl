@@ -1,5 +1,6 @@
 package com.mostlycertain.javapoetdsl
 
+import com.mostlycertain.javapoetdsl.TypeNames.className
 import com.squareup.javapoet.AnnotationSpec
 import com.squareup.javapoet.ClassName
 import com.squareup.javapoet.CodeBlock
@@ -70,7 +71,7 @@ fun classSpec(
         superInterfaces: List<TypeName> = emptyList(),
         superClass: TypeName? = null,
         block: ClassSpecFunc
-) = classSpec(ClassName.get("", name), modifiers, annotations, superInterfaces, superClass, block)
+) = classSpec(className("", name), modifiers, annotations, superInterfaces, superClass, block)
 
 data class ClassMeta(
         val name: ClassName,
