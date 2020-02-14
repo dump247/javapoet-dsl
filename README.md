@@ -1,4 +1,4 @@
-[![dump247](https://circleci.com/gh/dump247/javapoet-dsl.svg?style=shield)](https://circleci.com/gh/dump247/javapoet-dsl)
+![](https://github.com/dump247/javapoet-dsl/workflows/test/badge.svg)
 
 # What is JavaPoet?
 
