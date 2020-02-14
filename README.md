@@ -1,3 +1,5 @@
+[![dump247](https://circleci.com/gh/dump247/javapoet-dsl.svg?style=shield)](https://circleci.com/gh/dump247/javapoet-dsl)
+
 # What is JavaPoet?
 
 [JavaPoet](https://github.com/square/javapoet) is a Java API for generating `.java`
