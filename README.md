@@ -1,4 +1,4 @@
-![](https://github.com/dump247/javapoet-dsl/workflows/build/badge.svg)
+![](https://github.com/dump247/javapoet-dsl/workflows/Build%20master%20branch/badge.svg)
 
 # What is JavaPoet?
 
