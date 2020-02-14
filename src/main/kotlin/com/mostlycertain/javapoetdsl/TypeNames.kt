@@ -71,6 +71,10 @@ object TypeNames {
         return ArrayTypeName.of(of(componentType))
     }
 
+    fun arrayType(componentType: TypeName): ArrayTypeName {
+        return ArrayTypeName.of(componentType)
+    }
+
     fun optionalType(typeArgument: KClass<*>): ParameterizedTypeName {
         return optionalType(of(typeArgument))
     }
