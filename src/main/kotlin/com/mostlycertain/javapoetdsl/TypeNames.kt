@@ -76,34 +76,42 @@ object TypeNames {
     }
 
     fun optionalType(typeArgument: KClass<*>): ParameterizedTypeName {
-        return optionalType(of(typeArgument))
+        return parameterizedType(OPTIONAL, typeArgument)
     }
 
     fun optionalType(typeArgument: TypeName): ParameterizedTypeName {
-        return ParameterizedTypeName.get(OPTIONAL, typeArgument.ensureBoxed())
+        return parameterizedType(OPTIONAL, typeArgument)
     }
 
     fun listType(typeArgument: KClass<*>): ParameterizedTypeName {
-        return listType(of(typeArgument))
+        return parameterizedType(LIST, typeArgument)
     }
 
     fun listType(typeArgument: TypeName): ParameterizedTypeName {
-        return ParameterizedTypeName.get(LIST, typeArgument.ensureBoxed())
+        return parameterizedType(LIST, typeArgument)
     }
 
     fun setType(typeArgument: KClass<*>): ParameterizedTypeName {
-        return setType(of(typeArgument))
+        return parameterizedType(SET, typeArgument)
     }
 
     fun setType(typeArgument: TypeName): ParameterizedTypeName {
-        return ParameterizedTypeName.get(SET, typeArgument.ensureBoxed())
+        return parameterizedType(SET, typeArgument)
     }
 
     fun mapType(keyType: KClass<*>, valueType: KClass<*>): ParameterizedTypeName {
-        return mapType(of(keyType), of(valueType))
+        return parameterizedType(MAP, keyType, valueType)
     }
 
     fun mapType(keyType: TypeName, valueType: TypeName): ParameterizedTypeName {
-        return ParameterizedTypeName.get(MAP, keyType.ensureBoxed(), valueType.ensureBoxed())
+        return parameterizedType(MAP, keyType, valueType)
+    }
+
+    fun parameterizedType(rawType: ClassName, vararg typeArguments: KClass<*>): ParameterizedTypeName {
+        return ParameterizedTypeName.get(rawType, *typeArguments.map { of(it).ensureBoxed() }.toTypedArray())
+    }
+
+    fun parameterizedType(rawType: ClassName, vararg typeArguments: TypeName): ParameterizedTypeName {
+        return ParameterizedTypeName.get(rawType, *typeArguments.map { it.ensureBoxed() }.toTypedArray())
     }
 }
