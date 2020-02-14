@@ -12,5 +12,5 @@ jobs:
         java-version: '8'
         java-package: jdk
         architecture: x64
-    - name: Moving build to artifacts directory
+    - name: gradle test
       run: ./gradlew test
