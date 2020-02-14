@@ -1,13 +1,16 @@
 name: test
 on:
   push:
-    branches:    
-      - master
+    branches: [master]
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - uses: MrRamych/gradle-actions@v4.0-openjdk-8
+    - uses: actions/checkout@v2
+    - uses: actions/setup-java@v1
       with:
-        args: test
+        java-version: '8'
+        java-package: jdk
+        architecture: x64
+    - name: Moving build to artifacts directory
+      run: ./gradlew test
