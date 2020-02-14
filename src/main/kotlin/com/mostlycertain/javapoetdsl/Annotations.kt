@@ -29,10 +29,6 @@ object Annotations {
 
     fun of(type: ClassName): AnnotationSpec = AnnotationSpec.builder(type).build()
 
-    fun of(type: ClassName, valueFormat: String, vararg valueArgs: Any): AnnotationSpec {
-        return AnnotationSpec.builder(type).addMember("value", valueFormat, *valueArgs).build()
-    }
-
     /**
      * Build an annotation that marks a type as generated.
      *
