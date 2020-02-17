@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.squareup:javapoet:1.12.1")
+    api("com.squareup:javapoet:1.12.1")
 
     // Align versions of all Kotlin components
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
