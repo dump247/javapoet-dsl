@@ -30,6 +30,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ORG_GRADLE_PROJECT_releaseSigningKey: ${{ secrets.releaseSigningKey }}
           ORG_GRADLE_PROJECT_releaseSigningPassword: ${{ secrets.releaseSigningPassword }}
+          ORG_GRADLE_PROJECT_ossrhUsername: ${{ secrets.ossrhUsername }}
+          ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrets.ossrhPassword }}
 
         # The GITHUB_REF tag comes in the format 'refs/tags/xxx'.
         # So if we split on '/' and take the 3rd value, we can get the release name.
