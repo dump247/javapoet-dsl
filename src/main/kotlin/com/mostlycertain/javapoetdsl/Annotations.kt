@@ -32,8 +32,11 @@ object Annotations {
     /**
      * Build an annotation that marks a type as generated.
      *
-     * The resulting annotation is [javax.annotation.Generated] for java versions <= 8 and
-     * [javax.annotation.processing.Generated] for java versions >= 9.
+     * The resulting annotation is
+     * [javax.annotation.Generated](https://docs.oracle.com/javase/8/docs/api/javax/annotation/Generated.html)
+     * for java versions <= 8 and
+     * [javax.annotation.processing.Generated](https://docs.oracle.com/javase/9/docs/api/javax/annotation/processing/Generated.html)
+     * for java versions >= 9.
      *
      * @param generatorName Fully qualified name of the code generator.
      * @param generatedAt Date and time when the code was generated.
