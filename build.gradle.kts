@@ -76,6 +76,13 @@ publishing {
                     developerConnection.set("scm:git:git@github.com:dump247/javapoet-dsl.git")
                     url.set("https://github.com/dump247/javapoet-dsl")
                 }
+                developers {
+                    developer {
+                        id.set("dump247")
+                        name.set("Cory Thomas")
+                        email.set("dump247@users.noreply.github.com")
+                    }
+                }
             }
 
             from(components["java"])
