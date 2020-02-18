@@ -4,6 +4,9 @@ plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
     id("org.jetbrains.kotlin.jvm") version "1.3.61"
 
+    // Kotlin documentation engine
+    id("org.jetbrains.dokka") version "0.10.1"
+
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
 
@@ -31,6 +34,17 @@ tasks.test {
     useJUnitPlatform()
 }
 
+tasks.dokka {
+    outputFormat = "html"
+    outputDirectory = "$buildDir/javadoc"
+}
+
+val dokkaJar by tasks.creating(Jar::class) {
+    group = JavaBasePlugin.DOCUMENTATION_GROUP
+    archiveClassifier.set("javadoc")
+    from(tasks.dokka)
+}
+
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
@@ -45,6 +59,7 @@ publishing {
         create<MavenPublication>("default") {
             from(components["java"])
             artifact(sourcesJar.get())
+            artifact(dokkaJar)
         }
     }
 
