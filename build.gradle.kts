@@ -57,6 +57,23 @@ val sourcesJar by tasks.registering(Jar::class) {
 publishing {
     publications {
         create<MavenPublication>("default") {
+            pom {
+                name.set("JavaPoet DSL")
+                description.set("Kotlin DSL wrapper for the JavaPoet Java code generation library")
+                url.set("https://github.com/dump247/javapoet-dsl")
+                licenses {
+                    license {
+                        name.set("MIT")
+                        url.set("http://www.opensource.org/licenses/mit-license.php")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:git://github.com/dump247/javapoet-dsl.git")
+                    developerConnection.set("scm:git:git@github.com:dump247/javapoet-dsl.git")
+                    url.set("https://github.com/dump247/javapoet-dsl")
+                }
+            }
+
             from(components["java"])
             artifact(sourcesJar.get())
             artifact(dokkaJar)
