@@ -37,6 +37,10 @@ tasks.test {
 tasks.dokka {
     outputFormat = "html"
     outputDirectory = "$buildDir/javadoc"
+
+    configuration {
+        jdkVersion = 8
+    }
 }
 
 val dokkaJar by tasks.creating(Jar::class) {
