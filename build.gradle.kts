@@ -11,6 +11,7 @@ plugins {
     `java-library`
 
     `maven-publish`
+    signing
 }
 
 repositories {
@@ -101,4 +102,12 @@ publishing {
             }
         }
     }
+}
+
+signing {
+    val releaseSigningKey: String by project
+    val releaseSigningPassword: String by project
+    useInMemoryPgpKeys(releaseSigningKey, releaseSigningPassword)
+
+    sign(publishing.publications["default"])
 }
