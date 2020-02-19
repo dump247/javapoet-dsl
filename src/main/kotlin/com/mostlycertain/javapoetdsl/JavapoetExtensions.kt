@@ -10,7 +10,7 @@ import java.nio.file.Paths
  * If the type is primitive (e.g. int, char), return the boxed type (e.g. Integer, Character).
  * Otherwise, return `this`.
  */
-fun TypeName.ensureBoxed(): TypeName = if (isPrimitive) box() else this
+fun TypeName.ensureBoxed(): ClassName = (if (isPrimitive) box() else this) as ClassName
 
 /**
  * If the type is a boxed primitive (e.g. Integer, Character), return the primitive type (e.g. int, char).
