@@ -17,7 +17,7 @@ private fun methodSpecInternal(
         parameters: List<ParameterSpec> = emptyList(),
         modifiers: List<Modifier> = emptyList(),
         annotations: List<AnnotationSpec> = emptyList(),
-        exceptions: List<TypeName> = emptyList(),
+        throws: List<TypeName> = emptyList(),
         varargs: Boolean = false,
         block: MethodCodeFunc
 ): MethodSpec {
@@ -27,11 +27,11 @@ private fun methodSpecInternal(
             .addParameters(parameters)
             .addModifiers(modifiers)
             .addAnnotations(annotations)
-            .addExceptions(exceptions)
+            .addExceptions(throws)
             .varargs(varargs)
 
     val code = CodeBlock.builder()
-    val builder = MethodCodeBuilder(MethodMeta(name, returns, parameters, modifiers, annotations, varargs), code)
+    val builder = MethodCodeBuilder(MethodMeta(name, returns, parameters, modifiers, annotations, varargs, throws), code)
     builder.block()
     builder.close()
     methodBuilder.addCode(code.build())
@@ -88,7 +88,8 @@ data class MethodMeta(
         val parameters: List<ParameterSpec>,
         val modifiers: List<Modifier>,
         val annotations: List<AnnotationSpec>,
-        val varargs: Boolean
+        val varargs: Boolean,
+        val throws: List<TypeName>
 )
 
 class MethodCodeBuilder(val methodMeta: MethodMeta, code: CodeBlock.Builder) : CodeBuilder(code)
