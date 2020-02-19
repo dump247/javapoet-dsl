@@ -1,7 +1,9 @@
 package com.mostlycertain.javapoetdsl
 
 import com.mostlycertain.javapoetdsl.TypeNames.types
+import com.squareup.javapoet.ArrayTypeName
 import com.squareup.javapoet.ClassName
+import com.squareup.javapoet.ParameterizedTypeName
 import com.squareup.javapoet.TypeName
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -12,6 +14,7 @@ import java.io.InputStreamReader
 import java.net.MalformedURLException
 import java.net.URL
 import java.net.URLConnection
+import java.util.*
 import javax.lang.model.element.Modifier
 
 class JavapoetExtensionsTest {
@@ -126,6 +129,8 @@ class JavapoetExtensionsTest {
 
     @Test
     fun `ensureBoxed maps boxed types`() {
+        assertEquals(ParameterizedTypeName.get(Optional::class.java, String::class.java), ParameterizedTypeName.get(Optional::class.java, String::class.java).ensureBoxed())
+        assertEquals(ArrayTypeName.of(String::class.java), ArrayTypeName.of(String::class.java).ensureBoxed())
         assertEquals(ClassName.get(java.lang.String::class.java), ClassName.get(String::class.java).ensureBoxed())
         assertEquals(ClassName.get(Integer::class.java), TypeName.INT.ensureBoxed())
         assertEquals(ClassName.get(Character::class.java), TypeName.CHAR.ensureBoxed())
@@ -133,6 +138,8 @@ class JavapoetExtensionsTest {
 
     @Test
     fun `ensureUnboxed maps boxed types`() {
+        assertEquals(ParameterizedTypeName.get(Optional::class.java, String::class.java), ParameterizedTypeName.get(Optional::class.java, String::class.java).ensureUnboxed())
+        assertEquals(ArrayTypeName.of(String::class.java), ArrayTypeName.of(String::class.java).ensureUnboxed())
         assertEquals(ClassName.get(java.lang.String::class.java), ClassName.get(String::class.java).ensureUnboxed())
         assertEquals(TypeName.INT, ClassName.get(Integer::class.java).ensureUnboxed())
         assertEquals(TypeName.CHAR, ClassName.get(Character::class.java).ensureUnboxed())
