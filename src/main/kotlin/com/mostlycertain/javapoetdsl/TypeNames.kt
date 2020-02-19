@@ -4,6 +4,7 @@ import com.squareup.javapoet.ArrayTypeName
 import com.squareup.javapoet.ClassName
 import com.squareup.javapoet.ParameterizedTypeName
 import com.squareup.javapoet.TypeName
+import java.lang.IllegalArgumentException
 import kotlin.reflect.KClass
 
 object TypeNames {
@@ -51,6 +52,16 @@ object TypeNames {
     val SAFE_VARARGS = className("java.lang", "SafeVarargs")
 
     fun className(packageName: String, simpleName: String, vararg simpleNames: String): ClassName = ClassName.get(packageName, simpleName, *simpleNames)
+
+    fun className(class_: KClass<*>): ClassName {
+        val type = of(class_)
+
+        if (type !is ClassName) {
+            throw IllegalArgumentException("Type is not a class $class_")
+        }
+
+        return type
+    }
 
     fun of(class_: KClass<*>): TypeName {
         // TODO return constant types declared in [TypeNames]?
