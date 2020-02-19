@@ -12,6 +12,7 @@ plugins {
 
     `maven-publish`
     signing
+    id("io.codearte.nexus-staging") version "0.21.2"
 }
 
 repositories {
@@ -124,4 +125,12 @@ signing {
     useInMemoryPgpKeys(releaseSigningKey, releaseSigningPassword)
 
     sign(publishing.publications["default"])
+}
+
+nexusStaging {
+    val ossrhUsername: String by project
+    val ossrhPassword: String by project
+
+    username = ossrhUsername
+    password = ossrhPassword
 }
