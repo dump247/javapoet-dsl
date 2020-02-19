@@ -60,10 +60,6 @@ fun methodInvoke(context: CodeExpression, parameters: List<CodeExpression> = lis
         builder.add(param.toCodeBlock())
     }
 
-    if (parameters.size > 3) {
-        builder.add("\n")
-    }
-
     builder.unindent().add(")")
     return builder.buildExpression()
 }

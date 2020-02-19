@@ -127,7 +127,7 @@ class ExpressionsTest {
 
     @Test
     fun `methodInvoke inserts line breaks at 3 parameters`() {
-        assertEquals(e("method(\n  17,\n  \"a string value\",\n  1.0D,\n  10\n)"),
+        assertEquals(e("method(\n  17,\n  \"a string value\",\n  1.0D,\n  10)"),
                 methodInvoke(
                         context = "method",
                         parameters = listOf(literal(17), literal("a string value"), literal(1.0), literal(10))))
