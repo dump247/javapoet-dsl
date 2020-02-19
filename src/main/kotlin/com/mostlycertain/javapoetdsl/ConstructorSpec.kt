@@ -13,7 +13,7 @@ fun constructorSpec(
         modifiers: List<Modifier> = emptyList(),
         annotations: List<AnnotationSpec> = emptyList(),
         varargs: Boolean = false,
-        block: ConstructorCodeFunc
+        body: ConstructorCodeFunc
 ): MethodSpec {
     val methodBuilder = MethodSpec
             .constructorBuilder()
@@ -24,7 +24,7 @@ fun constructorSpec(
 
     val code = CodeBlock.builder()
     val builder = ConstructorCodeBuilder(ConstructorMeta(parameters, modifiers, annotations, varargs), code)
-    builder.block()
+    builder.body()
     builder.close()
     methodBuilder.addCode(code.build())
 

@@ -154,9 +154,9 @@ class ClassSpecBuilder(
             annotations: List<AnnotationSpec> = emptyList(),
             throws: List<TypeName> = emptyList(),
             varargs: Boolean = false,
-            block: MethodCodeFunc
+            body: MethodCodeFunc? = null
     ): MethodSpec {
-        val methodSpec = methodSpec(name, parameters, modifiers, annotations, throws, varargs, block)
+        val methodSpec = methodSpec(name, parameters, modifiers, annotations, throws, varargs, body)
         spec.addMethod(methodSpec)
         return methodSpec
     }
@@ -169,9 +169,9 @@ class ClassSpecBuilder(
             annotations: List<AnnotationSpec> = emptyList(),
             throws: List<TypeName> = emptyList(),
             varargs: Boolean = false,
-            block: MethodCodeFunc
+            body: MethodCodeFunc? = null
     ): MethodSpec {
-        val methodSpec = methodSpec(returns, name, parameters, modifiers, annotations, throws, varargs, block)
+        val methodSpec = methodSpec(returns, name, parameters, modifiers, annotations, throws, varargs, body)
         spec.addMethod(methodSpec)
         return methodSpec
     }
@@ -184,9 +184,9 @@ class ClassSpecBuilder(
             annotations: List<AnnotationSpec> = emptyList(),
             throws: List<TypeName> = emptyList(),
             varargs: Boolean = false,
-            block: MethodCodeFunc
+            body: MethodCodeFunc? = null
     ): MethodSpec {
-        val methodSpec = methodSpec(returns, name, parameters, modifiers, annotations, throws, varargs, block)
+        val methodSpec = methodSpec(returns, name, parameters, modifiers, annotations, throws, varargs, body)
         spec.addMethod(methodSpec)
         return methodSpec
     }
@@ -199,9 +199,9 @@ class ClassSpecBuilder(
             annotations: List<AnnotationSpec> = emptyList(),
             throws: List<TypeName> = emptyList(),
             varargs: Boolean = false,
-            block: MethodCodeFunc
+            body: MethodCodeFunc? = null
     ): MethodSpec {
-        val methodSpec = methodSpec(returns, name, parameters, modifiers, annotations, throws, varargs, block)
+        val methodSpec = methodSpec(returns, name, parameters, modifiers, annotations, throws, varargs, body)
         spec.addMethod(methodSpec)
         return methodSpec
     }
@@ -211,9 +211,9 @@ class ClassSpecBuilder(
             modifiers: List<Modifier> = emptyList(),
             annotations: List<AnnotationSpec> = emptyList(),
             varargs: Boolean = false,
-            block: ConstructorCodeFunc
+            body: ConstructorCodeFunc
     ): MethodSpec {
-        val constructorSpec = constructorSpec(parameters, modifiers, annotations, varargs, block)
+        val constructorSpec = constructorSpec(parameters, modifiers, annotations, varargs, body)
         spec.addMethod(constructorSpec)
         return constructorSpec
     }

@@ -19,7 +19,7 @@ private fun methodSpecInternal(
         annotations: List<AnnotationSpec> = emptyList(),
         throws: List<TypeName> = emptyList(),
         varargs: Boolean = false,
-        block: MethodCodeFunc
+        body: MethodCodeFunc? = null
 ): MethodSpec {
     val methodBuilder = MethodSpec
             .methodBuilder(name)
@@ -32,7 +32,9 @@ private fun methodSpecInternal(
 
     val code = CodeBlock.builder()
     val builder = MethodCodeBuilder(MethodMeta(name, returns, parameters, modifiers, annotations, varargs, throws), code)
-    builder.block()
+    if (body != null) {
+        builder.body()
+    }
     builder.close()
     methodBuilder.addCode(code.build())
 
@@ -46,8 +48,8 @@ fun methodSpec(
         annotations: List<AnnotationSpec> = emptyList(),
         throws: List<TypeName> = emptyList(),
         varargs: Boolean = false,
-        block: MethodCodeFunc
-) = methodSpecInternal(TypeName.VOID, name, parameters, modifiers, annotations, throws, varargs, block)
+        body: MethodCodeFunc? = null
+) = methodSpecInternal(TypeName.VOID, name, parameters, modifiers, annotations, throws, varargs, body)
 
 fun methodSpec(
         returns: TypeName,
@@ -57,8 +59,8 @@ fun methodSpec(
         annotations: List<AnnotationSpec> = emptyList(),
         throws: List<TypeName> = emptyList(),
         varargs: Boolean = false,
-        block: MethodCodeFunc
-) = methodSpecInternal(returns, name, parameters, modifiers, annotations, throws, varargs, block)
+        body: MethodCodeFunc? = null
+) = methodSpecInternal(returns, name, parameters, modifiers, annotations, throws, varargs, body)
 
 fun methodSpec(
         returns: Type,
@@ -68,8 +70,8 @@ fun methodSpec(
         annotations: List<AnnotationSpec> = emptyList(),
         throws: List<TypeName> = emptyList(),
         varargs: Boolean = false,
-        block: MethodCodeFunc
-) = methodSpecInternal(TypeName.get(returns), name, parameters, modifiers, annotations, throws, varargs, block)
+        body: MethodCodeFunc? = null
+) = methodSpecInternal(TypeName.get(returns), name, parameters, modifiers, annotations, throws, varargs, body)
 
 fun methodSpec(
         returns: KClass<*>,
@@ -79,8 +81,8 @@ fun methodSpec(
         annotations: List<AnnotationSpec> = emptyList(),
         throws: List<TypeName> = emptyList(),
         varargs: Boolean = false,
-        block: MethodCodeFunc
-) = methodSpecInternal(TypeNames.of(returns), name, parameters, modifiers, annotations, throws, varargs, block)
+        body: MethodCodeFunc? = null
+) = methodSpecInternal(TypeNames.of(returns), name, parameters, modifiers, annotations, throws, varargs, body)
 
 data class MethodMeta(
         val name: String,
