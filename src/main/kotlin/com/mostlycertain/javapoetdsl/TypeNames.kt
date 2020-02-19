@@ -73,75 +73,15 @@ object TypeNames {
 
     fun types(vararg classes: KClass<*>): List<TypeName> = classes.map(TypeNames::of)
 
-    fun arrayType(componentType: KClass<*>): ArrayTypeName {
-        return ArrayTypeName.of(of(componentType))
-    }
+    fun arrayType(componentType: KClass<*>): ArrayTypeName = ArrayTypeName.of(of(componentType))
 
-    fun arrayType(componentType: TypeName): ArrayTypeName {
-        return ArrayTypeName.of(componentType)
-    }
+    fun arrayType(componentType: TypeName): ArrayTypeName = ArrayTypeName.of(componentType)
 
-    fun optionalType(typeArgument: KClass<*>): ParameterizedTypeName {
-        return parameterizedType(OPTIONAL, typeArgument)
-    }
-
-    fun optionalType(typeArgument: TypeName): ParameterizedTypeName {
-        return parameterizedType(OPTIONAL, typeArgument)
-    }
-
-    fun listType(typeArgument: KClass<*>): ParameterizedTypeName {
-        return parameterizedType(LIST, typeArgument)
-    }
-
-    fun listType(typeArgument: TypeName): ParameterizedTypeName {
-        return parameterizedType(LIST, typeArgument)
-    }
-
-    fun setType(typeArgument: KClass<*>): ParameterizedTypeName {
-        return parameterizedType(SET, typeArgument)
-    }
-
-    fun setType(typeArgument: TypeName): ParameterizedTypeName {
-        return parameterizedType(SET, typeArgument)
-    }
-
-    fun iterableType(typeArgument: KClass<*>): ParameterizedTypeName {
-        return parameterizedType(ITERABLE, typeArgument)
-    }
-
-    fun iterableType(typeArgument: TypeName): ParameterizedTypeName {
-        return parameterizedType(ITERABLE, typeArgument)
-    }
-
-    fun iteratorType(typeArgument: KClass<*>): ParameterizedTypeName {
-        return parameterizedType(ITERATOR, typeArgument)
-    }
-
-    fun iteratorType(typeArgument: TypeName): ParameterizedTypeName {
-        return parameterizedType(ITERATOR, typeArgument)
-    }
-
-    fun streamType(typeArgument: KClass<*>): ParameterizedTypeName {
-        return parameterizedType(STREAM, typeArgument)
-    }
-
-    fun streamType(typeArgument: TypeName): ParameterizedTypeName {
-        return parameterizedType(STREAM, typeArgument)
-    }
-
-    fun mapType(keyType: KClass<*>, valueType: KClass<*>): ParameterizedTypeName {
-        return parameterizedType(MAP, keyType, valueType)
-    }
-
-    fun mapType(keyType: TypeName, valueType: TypeName): ParameterizedTypeName {
-        return parameterizedType(MAP, keyType, valueType)
-    }
-
-    fun parameterizedType(rawType: ClassName, vararg typeArguments: KClass<*>): ParameterizedTypeName {
+    fun genericType(rawType: ClassName, vararg typeArguments: KClass<*>): ParameterizedTypeName {
         return ParameterizedTypeName.get(rawType, *typeArguments.map { of(it).ensureBoxed() }.toTypedArray())
     }
 
-    fun parameterizedType(rawType: ClassName, vararg typeArguments: TypeName): ParameterizedTypeName {
+    fun genericType(rawType: ClassName, vararg typeArguments: TypeName): ParameterizedTypeName {
         return ParameterizedTypeName.get(rawType, *typeArguments.map { it.ensureBoxed() }.toTypedArray())
     }
 }
