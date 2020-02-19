@@ -1,5 +1,6 @@
 package com.mostlycertain.javapoetdsl
 
+import com.squareup.javapoet.AnnotationSpec
 import com.squareup.javapoet.ClassName
 import com.squareup.javapoet.JavaFile
 import com.squareup.javapoet.TypeName
@@ -19,6 +20,14 @@ fun TypeName.ensureBoxed(): TypeName = box()
  * Otherwise, return `this`.
  */
 fun TypeName.ensureUnboxed(): TypeName = if (isBoxedPrimitive) unbox() else this
+
+/**
+ * Type of the annotation.
+ *
+ * This is [AnnotationSpec.type] cast to [ClassName] because an annotation can not be anything but a class name.
+ */
+val AnnotationSpec.className: ClassName
+    get() = type as ClassName
 
 /**
  * True if the class name is a nested class.
