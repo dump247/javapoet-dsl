@@ -21,6 +21,12 @@ object TypeNames {
 
     val MAP = className("java.util", "Map")
 
+    val ITERABLE = className("java.lang", "Iterable")
+
+    val ITERATOR = className("java.util", "Iterator")
+
+    val STREAM = className("java.util.stream", "Stream")
+
     /**
      * Annotation used to mark source code as generated.
      *
@@ -97,6 +103,30 @@ object TypeNames {
 
     fun setType(typeArgument: TypeName): ParameterizedTypeName {
         return parameterizedType(SET, typeArgument)
+    }
+
+    fun iterableType(typeArgument: KClass<*>): ParameterizedTypeName {
+        return parameterizedType(ITERABLE, typeArgument)
+    }
+
+    fun iterableType(typeArgument: TypeName): ParameterizedTypeName {
+        return parameterizedType(ITERABLE, typeArgument)
+    }
+
+    fun iteratorType(typeArgument: KClass<*>): ParameterizedTypeName {
+        return parameterizedType(ITERATOR, typeArgument)
+    }
+
+    fun iteratorType(typeArgument: TypeName): ParameterizedTypeName {
+        return parameterizedType(ITERATOR, typeArgument)
+    }
+
+    fun streamType(typeArgument: KClass<*>): ParameterizedTypeName {
+        return parameterizedType(STREAM, typeArgument)
+    }
+
+    fun streamType(typeArgument: TypeName): ParameterizedTypeName {
+        return parameterizedType(STREAM, typeArgument)
     }
 
     fun mapType(keyType: KClass<*>, valueType: KClass<*>): ParameterizedTypeName {
