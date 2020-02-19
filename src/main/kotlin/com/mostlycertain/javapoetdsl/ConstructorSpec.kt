@@ -4,6 +4,7 @@ import com.squareup.javapoet.AnnotationSpec
 import com.squareup.javapoet.CodeBlock
 import com.squareup.javapoet.MethodSpec
 import com.squareup.javapoet.ParameterSpec
+import com.squareup.javapoet.TypeName
 import javax.lang.model.element.Modifier
 
 typealias ConstructorCodeFunc = ConstructorCodeBuilder.() -> Unit
@@ -12,6 +13,7 @@ fun constructorSpec(
         parameters: List<ParameterSpec> = emptyList(),
         modifiers: List<Modifier> = emptyList(),
         annotations: List<AnnotationSpec> = emptyList(),
+        throws: List<TypeName> = emptyList(),
         varargs: Boolean = false,
         body: ConstructorCodeFunc
 ): MethodSpec {
@@ -20,10 +22,11 @@ fun constructorSpec(
             .addParameters(parameters)
             .addModifiers(modifiers)
             .addAnnotations(annotations)
+            .addExceptions(throws)
             .varargs(varargs)
 
     val code = CodeBlock.builder()
-    val builder = ConstructorCodeBuilder(ConstructorMeta(parameters, modifiers, annotations, varargs), code)
+    val builder = ConstructorCodeBuilder(ConstructorMeta(parameters, modifiers, annotations, throws, varargs), code)
     builder.body()
     builder.close()
     methodBuilder.addCode(code.build())
@@ -35,6 +38,7 @@ data class ConstructorMeta(
         val parameters: List<ParameterSpec>,
         val modifiers: List<Modifier>,
         val annotations: List<AnnotationSpec>,
+        val throws: List<TypeName>,
         val varargs: Boolean
 )
 

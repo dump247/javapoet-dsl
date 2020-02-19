@@ -210,10 +210,11 @@ class ClassSpecBuilder(
             parameters: List<ParameterSpec> = emptyList(),
             modifiers: List<Modifier> = emptyList(),
             annotations: List<AnnotationSpec> = emptyList(),
+            throws: List<TypeName> = emptyList(),
             varargs: Boolean = false,
             body: ConstructorCodeFunc
     ): MethodSpec {
-        val constructorSpec = constructorSpec(parameters, modifiers, annotations, varargs, body)
+        val constructorSpec = constructorSpec(parameters, modifiers, annotations, throws, varargs, body)
         spec.addMethod(constructorSpec)
         return constructorSpec
     }

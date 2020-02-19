@@ -31,7 +31,7 @@ private fun methodSpecInternal(
             .varargs(varargs)
 
     val code = CodeBlock.builder()
-    val builder = MethodCodeBuilder(MethodMeta(name, returns, parameters, modifiers, annotations, varargs, throws), code)
+    val builder = MethodCodeBuilder(MethodMeta(name, returns, parameters, modifiers, annotations, throws, varargs), code)
     if (body != null) {
         builder.body()
     }
@@ -90,8 +90,8 @@ data class MethodMeta(
         val parameters: List<ParameterSpec>,
         val modifiers: List<Modifier>,
         val annotations: List<AnnotationSpec>,
-        val varargs: Boolean,
-        val throws: List<TypeName>
+        val throws: List<TypeName>,
+        val varargs: Boolean
 )
 
 class MethodCodeBuilder(val methodMeta: MethodMeta, code: CodeBlock.Builder) : CodeBuilder(code)
