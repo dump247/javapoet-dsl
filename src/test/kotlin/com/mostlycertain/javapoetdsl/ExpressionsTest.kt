@@ -103,4 +103,33 @@ class ExpressionsTest {
                 { assertEquals(CodeBlock.of("false"), literal(false).toCodeBlock()) }
         )
     }
+
+    @Test
+    fun `methodInvoke produced expected output`() {
+        assertAll(
+                { assertEquals(e("method()"), methodInvoke("method")) },
+                { assertEquals(e("this.method()"), methodInvoke("this.method")) },
+                { assertEquals(e("method(17)"), methodInvoke("method", listOf(literal(17)))) },
+                {
+                    assertEquals(e("method(17, \"a string value\")"),
+                            methodInvoke(
+                                    context = "method",
+                                    parameters = listOf(literal(17), literal("a string value"))))
+                },
+                {
+                    assertEquals(e("method(17, \"a string value\", 1.0D)"),
+                            methodInvoke(
+                                    context = "method",
+                                    parameters = listOf(literal(17), literal("a string value"), literal(1.0))))
+                }
+        )
+    }
+
+    @Test
+    fun `methodInvoke inserts line breaks at 3 parameters`() {
+        assertEquals(e("method(\n  17,\n  \"a string value\",\n  1.0D,\n  10\n)"),
+                methodInvoke(
+                        context = "method",
+                        parameters = listOf(literal(17), literal("a string value"), literal(1.0), literal(10))))
+    }
 }

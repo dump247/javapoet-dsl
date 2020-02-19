@@ -3,6 +3,8 @@ package com.mostlycertain.javapoetdsl
 import com.mostlycertain.javapoetdsl.Format.normalizeFormat
 import com.mostlycertain.javapoetdsl.Format.transformArgs
 import com.squareup.javapoet.CodeBlock
+import com.squareup.javapoet.TypeName
+import kotlin.reflect.KClass
 
 /**
  * Expression defined with Java code.
@@ -16,7 +18,7 @@ interface CodeExpression : Format.JavaCodeBlock
 /**
  * Expression wrapper around a single [CodeBlock].
  */
-private data class CodeBlockExpression(private val code: CodeBlock) : CodeExpression {
+internal data class CodeBlockExpression(private val code: CodeBlock) : CodeExpression {
     override fun toCodeBlock() = code
 }
 
@@ -25,6 +27,102 @@ private object EmptyExpression : CodeExpression {
 
     override fun toCodeBlock() = EMPTY_BLOCK
 }
+
+/**
+ * Generate a method invocation expression.
+ *
+ * Example:
+ *   methodInvoke("this.method", literal(100))
+ *   // output: this.method(100)
+ *
+ * @param context method being invoked
+ * @param parameters expressions that evaluate to the parameter values passed to the constructor
+ */
+fun methodInvoke(context: CodeExpression, parameters: List<CodeExpression> = listOf()): CodeExpression {
+    val builder = CodeBlock.builder()
+    builder.add(context.toCodeBlock())
+    builder.add("(").indent()
+
+    // Putting expressions on separate lines at 3 parameters is arbitrary. Ideally, this would break once the
+    // length of the line hits a limit, but that is more complicated.
+    val parameterSeparator = if (parameters.size > 3) {
+        builder.add("\n")
+        ",\n"
+    } else {
+        ", "
+    }
+
+    parameters.forEachIndexed { index, param ->
+        if (index > 0) {
+            builder.add(parameterSeparator)
+        }
+
+        builder.add(param.toCodeBlock())
+    }
+
+    if (parameters.size > 3) {
+        builder.add("\n")
+    }
+
+    builder.unindent().add(")")
+    return builder.buildExpression()
+}
+
+fun methodInvoke(context: CodeExpression, vararg parameters: CodeExpression) = methodInvoke(context, parameters.toList())
+
+fun methodInvoke(context: String, vararg parameters: CodeExpression) = methodInvoke(e(context), parameters.toList())
+
+fun methodInvoke(context: String, parameters: List<CodeExpression> = listOf()) = methodInvoke(e(context), parameters)
+
+/**
+ * Generate a constructor invocation expression.
+ *
+ * Example:
+ *   constructorInvoke(StringBuilder::class, literal(100))
+ *   // output: new StringBuilder(100)
+ *
+ * @param type type to instantiate
+ * @param parameters expressions that evaluate to the parameter values passed to the constructor
+ */
+fun constructorInvoke(type: TypeName, parameters: List<CodeExpression> = listOf()): CodeExpression {
+    return methodInvoke(e("new %T", type), parameters)
+}
+
+/**
+ * Generate a constructor invocation expression.
+ *
+ * Example:
+ *   constructorInvoke(StringBuilder::class, literal(100))
+ *   // output: new StringBuilder(100)
+ *
+ * @param type type to instantiate
+ * @param parameters expressions that evaluate to the parameter values passed to the constructor
+ */
+fun constructorInvoke(type: TypeName, vararg parameters: CodeExpression) = constructorInvoke(type, parameters.toList())
+
+/**
+ * Generate a constructor invocation expression.
+ *
+ * Example:
+ *   constructorInvoke(StringBuilder::class, literal(100))
+ *   // output: new StringBuilder(100)
+ *
+ * @param type type to instantiate
+ * @param parameters expressions that evaluate to the parameter values passed to the constructor
+ */
+fun constructorInvoke(type: KClass<*>, vararg parameters: CodeExpression) = constructorInvoke(TypeNames.of(type), parameters.toList())
+
+/**
+ * Generate a constructor invocation expression.
+ *
+ * Example:
+ *   constructorInvoke(StringBuilder::class, literal(100))
+ *   // output: new StringBuilder(100)
+ *
+ * @param type type to instantiate
+ * @param parameters expressions that evaluate to the parameter values passed to the constructor
+ */
+fun constructorInvoke(type: KClass<*>, parameters: List<CodeExpression> = listOf()) = constructorInvoke(TypeNames.of(type), parameters)
 
 /**
  * @param expressions expressions to join

@@ -2,10 +2,15 @@ package com.mostlycertain.javapoetdsl
 
 import com.squareup.javapoet.AnnotationSpec
 import com.squareup.javapoet.ClassName
+import com.squareup.javapoet.CodeBlock
 import com.squareup.javapoet.JavaFile
 import com.squareup.javapoet.TypeName
 import java.nio.file.Path
 import java.nio.file.Paths
+
+fun CodeBlock.toExpression(): CodeExpression = CodeBlockExpression(this)
+
+fun CodeBlock.Builder.buildExpression(): CodeExpression = this.build().toExpression()
 
 /**
  * If the type is primitive (e.g. int, char), return the boxed type (e.g. Integer, Character).
