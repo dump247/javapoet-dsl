@@ -42,4 +42,8 @@ jobs:
           ./gradlew -Pversion=${NEW_VERSION} publish
 
       - name: Release repository
+          env:
+            ORG_GRADLE_PROJECT_ossrhUsername: ${{ secrets.ossrhUsername }}
+            ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrets.ossrhPassword }}
+
         run: ./gradlew closeAndReleaseRepository
