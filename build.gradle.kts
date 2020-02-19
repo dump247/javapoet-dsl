@@ -109,6 +109,7 @@ publishing {
             val ossrhUsername: String by project
             val ossrhPassword: String by project
 
+            name = "MavenCentral"
             url = if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
 
             credentials {
