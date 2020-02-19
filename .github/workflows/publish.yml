@@ -41,10 +41,5 @@ jobs:
           echo "Github username: ${GITHUB_ACTOR}"
           ./gradlew -Pversion=${NEW_VERSION} publish
 
-  release:
-    runs-on: ubuntu-latest
-    needs: publish
-
-    steps:
       - name: Release repository
         run: ./gradlew closeAndReleaseRepository
