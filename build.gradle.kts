@@ -12,6 +12,7 @@ plugins {
 
     `maven-publish`
     signing
+    id("de.marcphilipp.nexus-publish") version "0.4.0"
     id("io.codearte.nexus-staging") version "0.21.2"
 }
 
@@ -102,21 +103,6 @@ publishing {
                 password = System.getenv("GITHUB_TOKEN")
             }
         }
-
-        maven {
-            val releasesRepoUrl = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
-            val snapshotsRepoUrl = uri("https://oss.sonatype.org/content/repositories/snapshots/")
-            val ossrhUsername: String by project
-            val ossrhPassword: String by project
-
-            name = "MavenCentral"
-            url = if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
-
-            credentials {
-                username = ossrhUsername
-                password = ossrhPassword
-            }
-        }
     }
 }
 
@@ -126,6 +112,12 @@ signing {
     useInMemoryPgpKeys(releaseSigningKey, releaseSigningPassword)
 
     sign(publishing.publications["default"])
+}
+
+nexusPublishing {
+    repositories {
+        sonatype()
+    }
 }
 
 nexusStaging {
