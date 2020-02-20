@@ -1,5 +1,6 @@
 package com.mostlycertain.javapoetdsl
 
+import com.mostlycertain.javapoetdsl.TypeNames.genericType
 import com.squareup.javapoet.AnnotationSpec
 import com.squareup.javapoet.ClassName
 import com.squareup.javapoet.CodeBlock
@@ -7,6 +8,7 @@ import com.squareup.javapoet.JavaFile
 import com.squareup.javapoet.TypeName
 import java.nio.file.Path
 import java.nio.file.Paths
+import kotlin.reflect.KClass
 
 fun CodeBlock.toExpression(): CodeExpression = CodeBlockExpression(this)
 
@@ -39,6 +41,24 @@ val AnnotationSpec.className: ClassName
  */
 val ClassName.isNested: Boolean
     get() = enclosingClassName() != null
+
+/**
+ * Build a generic, parameterized type from the current class.
+ *
+ * Example:
+ *    TypeNames.Optional[Int::class]
+ *    // Output: java.lang.Optional<Integer>
+ */
+operator fun ClassName.get(vararg typeArguments: KClass<*>) = genericType(this, *typeArguments)
+
+/**
+ * Build a generic, parameterized type from the current class.
+ *
+ * Example:
+ *    TypeNames.Optional[TypeName.INT]
+ *    // Output: java.lang.Optional<Integer>
+ */
+operator fun ClassName.get(vararg typeArguments: TypeName) = genericType(this, *typeArguments)
 
 /**
  * Convert a non-nested class name to a java file path.
