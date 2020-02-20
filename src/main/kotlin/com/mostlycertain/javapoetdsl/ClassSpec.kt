@@ -46,20 +46,20 @@ fun classSpec(
         name: ClassName,
         modifiers: List<Modifier> = emptyList(),
         annotations: List<AnnotationSpec> = emptyList(),
-        superInterfaces: List<TypeName> = emptyList(),
-        superClass: TypeName? = null,
+        implements: List<TypeName> = emptyList(),
+        extends: TypeName? = null,
         block: ClassSpecFunc
 ): ClassSpec {
     val classBuilder = TypeSpec.classBuilder(name)
             .addModifiers(*modifiers.toTypedArray()) // no Iterable overload
             .addAnnotations(annotations)
-            .addSuperinterfaces(superInterfaces)
+            .addSuperinterfaces(implements)
 
-    if (superClass != null) {
-        classBuilder.superclass(superClass)
+    if (extends != null) {
+        classBuilder.superclass(extends)
     }
 
-    ClassSpecBuilder(ClassMeta(name, annotations, modifiers), classBuilder).block()
+    ClassSpecBuilder(ClassMeta(name, annotations, modifiers, implements, extends), classBuilder).block()
 
     return ClassSpec(name, classBuilder.build())
 }
@@ -68,15 +68,17 @@ fun classSpec(
         name: String,
         modifiers: List<Modifier> = emptyList(),
         annotations: List<AnnotationSpec> = emptyList(),
-        superInterfaces: List<TypeName> = emptyList(),
-        superClass: TypeName? = null,
+        implements: List<TypeName> = emptyList(),
+        extends: TypeName? = null,
         block: ClassSpecFunc
-) = classSpec(className("", name), modifiers, annotations, superInterfaces, superClass, block)
+) = classSpec(className("", name), modifiers, annotations, implements, extends, block)
 
 data class ClassMeta(
         val name: ClassName,
         val annotations: List<AnnotationSpec>,
-        val modifiers: List<Modifier>
+        val modifiers: List<Modifier>,
+        val implements: List<TypeName>,
+        val extends: TypeName?
 )
 
 class ClassSpecBuilder(
@@ -123,11 +125,11 @@ class ClassSpecBuilder(
             name: String,
             modifiers: List<Modifier> = emptyList(),
             annotations: List<AnnotationSpec> = emptyList(),
-            superInterfaces: List<TypeName> = emptyList(),
-            superClass: TypeName? = null,
+            implements: List<TypeName> = emptyList(),
+            extends: TypeName? = null,
             block: ClassSpecFunc
     ): ClassSpec {
-        val classSpec = classSpec(classMeta.name.nestedClass(name), modifiers, annotations, superInterfaces, superClass, block)
+        val classSpec = classSpec(classMeta.name.nestedClass(name), modifiers, annotations, implements, extends, block)
         spec.addType(classSpec.typeSpec)
         return classSpec
     }
@@ -136,13 +138,13 @@ class ClassSpecBuilder(
             name: ClassName,
             modifiers: List<Modifier> = emptyList(),
             annotations: List<AnnotationSpec> = emptyList(),
-            superInterfaces: List<TypeName> = emptyList(),
-            superClass: TypeName? = null,
+            implements: List<TypeName> = emptyList(),
+            extends: TypeName? = null,
             block: ClassSpecFunc
     ): ClassSpec {
         check(classMeta.name == name.enclosingClassName())
 
-        val classSpec = classSpec(name, modifiers, annotations, superInterfaces, superClass, block)
+        val classSpec = classSpec(name, modifiers, annotations, implements, extends, block)
         spec.addType(classSpec.typeSpec)
         return classSpec
     }
