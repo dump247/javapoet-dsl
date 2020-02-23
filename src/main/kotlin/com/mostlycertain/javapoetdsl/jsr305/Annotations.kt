@@ -2,6 +2,9 @@ package com.mostlycertain.javapoetdsl.jsr305
 
 import com.mostlycertain.javapoetdsl.Annotations
 
+/**
+ * Annotations exported by com.google.code.findbugs jsr305 library.
+ */
 object Annotations {
     val IMMUTABLE = Annotations.of(TypeNames.IMMUTABLE)
 
