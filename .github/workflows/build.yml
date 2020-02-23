@@ -36,6 +36,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Fetch gh-pages branch
+        run: git fetch --no-tags --prune --depth=1 origin gh-pages
+
       - name: Setup JDK
         uses: actions/setup-java@v1
         with:
