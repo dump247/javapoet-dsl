@@ -43,21 +43,16 @@ jobs:
         with:
           java-version: 8
 
-      - name: Setup build cache
-        uses: actions/cache@v1
-        with:
-          path: ~/.gradle/caches
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle.kts') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
-
       - name: Setup git user/email
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-      - name: Gradle publishLatestJavadoc
-        run: ./gradlew publishLatestJavadoc
+      - name: Gradle dokka
+        run: ./gradlew dokka
+
+      - name: Publish javadocs
+        run: ./publish-javadoc.sh
 
   release-notes:
     runs-on: ubuntu-latest
