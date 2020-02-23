@@ -30,7 +30,6 @@ jobs:
 
   javadoc:
     runs-on: ubuntu-latest
-    needs: build
 
     steps:
       - name: Checkout code
@@ -51,6 +50,11 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle.kts') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+
+      - name: Setup git user/email
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
 
       - name: Gradle publishLatestJavadoc
         run: ./gradlew publishLatestJavadoc
