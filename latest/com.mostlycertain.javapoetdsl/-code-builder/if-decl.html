@@ -1,0 +1,33 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CodeBuilder.ifDecl - javapoet-dsl</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">javapoet-dsl</a>&nbsp;/&nbsp;<a href="../index.html">com.mostlycertain.javapoetdsl</a>&nbsp;/&nbsp;<a href="index.html">CodeBuilder</a>&nbsp;/&nbsp;<a href="./if-decl.html">ifDecl</a><br/>
+<br/>
+<h1>ifDecl</h1>
+<a name="com.mostlycertain.javapoetdsl.CodeBuilder$ifDecl(kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))"></a>
+<code><span class="keyword">fun </span><span class="identifier">ifDecl</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$ifDecl(kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/conditionFormat">conditionFormat</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$ifDecl(kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/conditionArgs">conditionArgs</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$ifDecl(kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="../-code-func.html"><span class="identifier">CodeFunc</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">IfFlow</span></code>
+<p>Render an if-else condition.</p>
+<p>The "else" and "else if" are declared by chaining calls to the returned <a href="-if-flow/index.html">IfFlow</a>.</p>
+<p>Example:
+     ifDecl("var == %L", variableName) {
+         s("return A")
+     }.elseIfDecl("var == null") {
+         s("return B")
+     }.elseDecl {
+         s("return C")
+     }</p>
+<pre><code>    // -- Result --
+    // if (var == otherVar) {
+    //   return A;
+    // } else if (var == null) {
+    //   return B;
+    // } else {
+    //   return C;
+    // }</code></pre><a name="com.mostlycertain.javapoetdsl.CodeBuilder$ifDecl(com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))"></a>
+<code><span class="keyword">fun </span><span class="identifier">ifDecl</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$ifDecl(com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/condition">condition</span><span class="symbol">:</span>&nbsp;<a href="../-code-expression.html"><span class="identifier">CodeExpression</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$ifDecl(com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="../-code-func.html"><span class="identifier">CodeFunc</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">IfFlow</span></code>
+</BODY>
+</HTML>

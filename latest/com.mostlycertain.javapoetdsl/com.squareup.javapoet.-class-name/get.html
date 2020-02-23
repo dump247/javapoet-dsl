@@ -1,0 +1,24 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>get - javapoet-dsl</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">javapoet-dsl</a>&nbsp;/&nbsp;<a href="../index.html">com.mostlycertain.javapoetdsl</a>&nbsp;/&nbsp;<a href="index.html">com.squareup.javapoet.ClassName</a>&nbsp;/&nbsp;<a href="./get.html">get</a><br/>
+<br/>
+<h1>get</h1>
+<a name="com.mostlycertain.javapoetdsl$get(com.squareup.javapoet.ClassName, kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))))"></a>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><span class="identifier">ClassName</span><span class="symbol">.</span><span class="identifier">get</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="com.mostlycertain.javapoetdsl$get(com.squareup.javapoet.ClassName, kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))))/typeArguments">typeArguments</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ParameterizedTypeName</span></code>
+<p>Build a generic, parameterized type from the current class.</p>
+<p>Example:
+    TypeNames.Optional<a href="#">Int::class</a>
+    // Output: java.lang.Optional</p>
+<a name="com.mostlycertain.javapoetdsl$get(com.squareup.javapoet.ClassName, kotlin.Array((com.squareup.javapoet.TypeName)))"></a>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><span class="identifier">ClassName</span><span class="symbol">.</span><span class="identifier">get</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="com.mostlycertain.javapoetdsl$get(com.squareup.javapoet.ClassName, kotlin.Array((com.squareup.javapoet.TypeName)))/typeArguments">typeArguments</span><span class="symbol">:</span>&nbsp;<span class="identifier">TypeName</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ParameterizedTypeName</span></code>
+<p>Build a generic, parameterized type from the current class.</p>
+<p>Example:
+    TypeNames.Optional<a href="#">TypeName.INT</a>
+    // Output: java.lang.Optional</p>
+</BODY>
+</HTML>

@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CodeBuilder.TryFlow - javapoet-dsl</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../../index.html">javapoet-dsl</a>&nbsp;/&nbsp;<a href="../../index.html">com.mostlycertain.javapoetdsl</a>&nbsp;/&nbsp;<a href="../index.html">CodeBuilder</a>&nbsp;/&nbsp;<a href="./index.html">TryFlow</a><br/>
+<br/>
+<h1>TryFlow</h1>
+<code><span class="keyword">inner</span> <span class="keyword">class </span><span class="identifier">TryFlow</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Flow</span></code>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-init-.html">&lt;init&gt;</a></h4>
+</td>
+<td>
+<code><span class="identifier">TryFlow</span><span class="symbol">(</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="catch-decl.html">catchDecl</a></h4>
+</td>
+<td>
+<p>Render a catch block.</p>
+<code><span class="keyword">fun </span><span class="identifier">catchDecl</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder.TryFlow$catchDecl(kotlin.collections.List((com.squareup.javapoet.TypeName)), kotlin.String, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/types">types</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">TypeName</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder.TryFlow$catchDecl(kotlin.collections.List((com.squareup.javapoet.TypeName)), kotlin.String, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/variableName">variableName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder.TryFlow$catchDecl(kotlin.collections.List((com.squareup.javapoet.TypeName)), kotlin.String, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="../../-code-func.html"><span class="identifier">CodeFunc</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TryFlow</span></code><br/>
+<code><span class="keyword">fun </span><span class="identifier">catchDecl</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder.TryFlow$catchDecl(com.squareup.javapoet.TypeName, kotlin.String, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">TypeName</span><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder.TryFlow$catchDecl(com.squareup.javapoet.TypeName, kotlin.String, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/variableName">variableName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder.TryFlow$catchDecl(com.squareup.javapoet.TypeName, kotlin.String, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="../../-code-func.html"><span class="identifier">CodeFunc</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TryFlow</span></code><br/>
+<code><span class="keyword">fun </span><span class="identifier">catchDecl</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder.TryFlow$catchDecl(kotlin.reflect.KClass((kotlin.Throwable)), kotlin.String, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/type">type</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder.TryFlow$catchDecl(kotlin.reflect.KClass((kotlin.Throwable)), kotlin.String, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/variableName">variableName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder.TryFlow$catchDecl(kotlin.reflect.KClass((kotlin.Throwable)), kotlin.String, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="../../-code-func.html"><span class="identifier">CodeFunc</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TryFlow</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="finally-decl.html">finallyDecl</a></h4>
+</td>
+<td>
+<p>Render a "finally" block.</p>
+<code><span class="keyword">fun </span><span class="identifier">finallyDecl</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder.TryFlow$finallyDecl(kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="../../-code-func.html"><span class="identifier">CodeFunc</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

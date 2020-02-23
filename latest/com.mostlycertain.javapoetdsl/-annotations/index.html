@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Annotations - javapoet-dsl</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">javapoet-dsl</a>&nbsp;/&nbsp;<a href="../index.html">com.mostlycertain.javapoetdsl</a>&nbsp;/&nbsp;<a href="./index.html">Annotations</a><br/>
+<br/>
+<h1>Annotations</h1>
+<code><span class="keyword">object </span><span class="identifier">Annotations</span></code>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-d-e-p-r-e-c-a-t-e-d.html">DEPRECATED</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">DEPRECATED</span><span class="symbol">: </span><span class="identifier">AnnotationSpec</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-f-u-n-c-t-i-o-n-a-l_-i-n-t-e-r-f-a-c-e.html">FUNCTIONAL_INTERFACE</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">FUNCTIONAL_INTERFACE</span><span class="symbol">: </span><span class="identifier">AnnotationSpec</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-o-v-e-r-r-i-d-e.html">OVERRIDE</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">OVERRIDE</span><span class="symbol">: </span><span class="identifier">AnnotationSpec</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-s-a-f-e_-v-a-r-a-r-g-s.html">SAFE_VARARGS</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">SAFE_VARARGS</span><span class="symbol">: </span><span class="identifier">AnnotationSpec</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-s-u-p-p-r-e-s-s_-a-l-l_-w-a-r-n-i-n-g-s.html">SUPPRESS_ALL_WARNINGS</a></h4>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">SUPPRESS_ALL_WARNINGS</span><span class="symbol">: </span><span class="identifier">AnnotationSpec</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="generated.html">generated</a></h4>
+</td>
+<td>
+<p>Build an annotation that marks a type as generated.</p>
+<code><span class="keyword">fun </span><span class="identifier">generated</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.Annotations$generated(kotlin.String, java.time.Instant, kotlin.String, com.mostlycertain.javapoetdsl.JavaVersion)/generatorName">generatorName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.Annotations$generated(kotlin.String, java.time.Instant, kotlin.String, com.mostlycertain.javapoetdsl.JavaVersion)/generatedAt">generatedAt</span><span class="symbol">:</span>&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html"><span class="identifier">Instant</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.Annotations$generated(kotlin.String, java.time.Instant, kotlin.String, com.mostlycertain.javapoetdsl.JavaVersion)/comments">comments</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a>&nbsp;<span class="symbol">=</span>&nbsp;""<span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.Annotations$generated(kotlin.String, java.time.Instant, kotlin.String, com.mostlycertain.javapoetdsl.JavaVersion)/targetVersion">targetVersion</span><span class="symbol">:</span>&nbsp;<a href="../-java-version/index.html"><span class="identifier">JavaVersion</span></a>&nbsp;<span class="symbol">=</span>&nbsp;JavaVersion.VERSION_1_9<span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AnnotationSpec</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="of.html">of</a></h4>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">of</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.Annotations$of(com.squareup.javapoet.ClassName)/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassName</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AnnotationSpec</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="suppress-warnings.html">suppressWarnings</a></h4>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">suppressWarnings</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="com.mostlycertain.javapoetdsl.Annotations$suppressWarnings(kotlin.Array((kotlin.String)))/warnings">warnings</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AnnotationSpec</span></code><br/>
+<code><span class="keyword">fun </span><span class="identifier">suppressWarnings</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.Annotations$suppressWarnings(kotlin.collections.List((kotlin.String)))/warnings">warnings</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AnnotationSpec</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

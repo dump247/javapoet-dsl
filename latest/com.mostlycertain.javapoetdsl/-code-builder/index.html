@@ -1,0 +1,154 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CodeBuilder - javapoet-dsl</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">javapoet-dsl</a>&nbsp;/&nbsp;<a href="../index.html">com.mostlycertain.javapoetdsl</a>&nbsp;/&nbsp;<a href="./index.html">CodeBuilder</a><br/>
+<br/>
+<h1>CodeBuilder</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CodeBuilder</span></code>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-flow/index.html">Flow</a></h4>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">inner</span> <span class="keyword">class </span><span class="identifier">Flow</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-if-flow/index.html">IfFlow</a></h4>
+</td>
+<td>
+<code><span class="keyword">inner</span> <span class="keyword">class </span><span class="identifier">IfFlow</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Flow</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-try-flow/index.html">TryFlow</a></h4>
+</td>
+<td>
+<code><span class="keyword">inner</span> <span class="keyword">class </span><span class="identifier">TryFlow</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Flow</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-init-.html">&lt;init&gt;</a></h4>
+</td>
+<td>
+<code><span class="identifier">CodeBuilder</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$<init>(com.squareup.javapoet.CodeBlock.Builder)/code">code</span><span class="symbol">:</span>&nbsp;<span class="identifier">Builder</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="block-decl.html">blockDecl</a></h4>
+</td>
+<td>
+<p>Render an anonymous block.</p>
+<code><span class="keyword">fun </span><span class="identifier">blockDecl</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$blockDecl(kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="../-code-func.html"><span class="identifier">CodeFunc</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="for-each-decl.html">forEachDecl</a></h4>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">forEachDecl</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$forEachDecl(com.squareup.javapoet.TypeName, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/variableType">variableType</span><span class="symbol">:</span>&nbsp;<span class="identifier">TypeName</span><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$forEachDecl(com.squareup.javapoet.TypeName, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/variableName">variableName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$forEachDecl(com.squareup.javapoet.TypeName, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/collection">collection</span><span class="symbol">:</span>&nbsp;<a href="../-code-expression.html"><span class="identifier">CodeExpression</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$forEachDecl(com.squareup.javapoet.TypeName, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="../-code-func.html"><span class="identifier">CodeFunc</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">fun </span><span class="identifier">forEachDecl</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$forEachDecl(java.lang.reflect.Type, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/variableType">variableType</span><span class="symbol">:</span>&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Type.html"><span class="identifier">Type</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$forEachDecl(java.lang.reflect.Type, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/variableName">variableName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$forEachDecl(java.lang.reflect.Type, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/collection">collection</span><span class="symbol">:</span>&nbsp;<a href="../-code-expression.html"><span class="identifier">CodeExpression</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$forEachDecl(java.lang.reflect.Type, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="../-code-func.html"><span class="identifier">CodeFunc</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">fun </span><span class="identifier">forEachDecl</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$forEachDecl(kotlin.reflect.KClass((kotlin.Any)), kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/variableType">variableType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$forEachDecl(kotlin.reflect.KClass((kotlin.Any)), kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/variableName">variableName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$forEachDecl(kotlin.reflect.KClass((kotlin.Any)), kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/collection">collection</span><span class="symbol">:</span>&nbsp;<a href="../-code-expression.html"><span class="identifier">CodeExpression</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$forEachDecl(kotlin.reflect.KClass((kotlin.Any)), kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="../-code-func.html"><span class="identifier">CodeFunc</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="if-decl.html">ifDecl</a></h4>
+</td>
+<td>
+<p>Render an if-else condition.</p>
+<code><span class="keyword">fun </span><span class="identifier">ifDecl</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$ifDecl(kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/conditionFormat">conditionFormat</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$ifDecl(kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/conditionArgs">conditionArgs</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$ifDecl(kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="../-code-func.html"><span class="identifier">CodeFunc</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">IfFlow</span></code><code><span class="keyword">fun </span><span class="identifier">ifDecl</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$ifDecl(com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/condition">condition</span><span class="symbol">:</span>&nbsp;<a href="../-code-expression.html"><span class="identifier">CodeExpression</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$ifDecl(com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="../-code-func.html"><span class="identifier">CodeFunc</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">IfFlow</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="s.html">s</a></h4>
+</td>
+<td>
+<p>Short alias for <a href="statement-decl.html">statementDecl</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">s</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$s(kotlin.String, kotlin.Array((kotlin.Any)))/format">format</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$s(kotlin.String, kotlin.Array((kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">fun </span><span class="identifier">s</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$s(com.mostlycertain.javapoetdsl.CodeExpression)/expression">expression</span><span class="symbol">:</span>&nbsp;<a href="../-code-expression.html"><span class="identifier">CodeExpression</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="statement-decl.html">statementDecl</a></h4>
+</td>
+<td>
+<p>Render a java statement.</p>
+<code><span class="keyword">fun </span><span class="identifier">statementDecl</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$statementDecl(kotlin.String, kotlin.Array((kotlin.Any)))/format">format</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$statementDecl(kotlin.String, kotlin.Array((kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">fun </span><span class="identifier">statementDecl</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$statementDecl(com.mostlycertain.javapoetdsl.CodeExpression)/expression">expression</span><span class="symbol">:</span>&nbsp;<a href="../-code-expression.html"><span class="identifier">CodeExpression</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="try-decl.html">tryDecl</a></h4>
+</td>
+<td>
+<p>Render a try-catch block.</p>
+<code><span class="keyword">fun </span><span class="identifier">tryDecl</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$tryDecl(kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="../-code-func.html"><span class="identifier">CodeFunc</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TryFlow</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="v.html">v</a></h4>
+</td>
+<td>
+<p>Short alias for <a href="variable-decl.html">variableDecl</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">v</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$v(com.squareup.javapoet.TypeName, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">TypeName</span><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$v(com.squareup.javapoet.TypeName, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$v(com.squareup.javapoet.TypeName, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/initializer">initializer</span><span class="symbol">:</span>&nbsp;<a href="../-code-expression.html"><span class="identifier">CodeExpression</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$v(com.squareup.javapoet.TypeName, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/final">final</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">fun </span><span class="identifier">v</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$v(java.lang.reflect.Type, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/type">type</span><span class="symbol">:</span>&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Type.html"><span class="identifier">Type</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$v(java.lang.reflect.Type, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$v(java.lang.reflect.Type, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/initializer">initializer</span><span class="symbol">:</span>&nbsp;<a href="../-code-expression.html"><span class="identifier">CodeExpression</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$v(java.lang.reflect.Type, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/final">final</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">fun </span><span class="identifier">v</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$v(kotlin.reflect.KClass((kotlin.Any)), kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/type">type</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$v(kotlin.reflect.KClass((kotlin.Any)), kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$v(kotlin.reflect.KClass((kotlin.Any)), kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/initializer">initializer</span><span class="symbol">:</span>&nbsp;<a href="../-code-expression.html"><span class="identifier">CodeExpression</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$v(kotlin.reflect.KClass((kotlin.Any)), kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/final">final</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="variable-decl.html">variableDecl</a></h4>
+</td>
+<td>
+<p>Declare a variable.</p>
+<code><span class="keyword">fun </span><span class="identifier">variableDecl</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$variableDecl(com.squareup.javapoet.TypeName, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">TypeName</span><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$variableDecl(com.squareup.javapoet.TypeName, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$variableDecl(com.squareup.javapoet.TypeName, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/initializer">initializer</span><span class="symbol">:</span>&nbsp;<a href="../-code-expression.html"><span class="identifier">CodeExpression</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$variableDecl(com.squareup.javapoet.TypeName, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/final">final</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">fun </span><span class="identifier">variableDecl</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$variableDecl(java.lang.reflect.Type, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/type">type</span><span class="symbol">:</span>&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Type.html"><span class="identifier">Type</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$variableDecl(java.lang.reflect.Type, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$variableDecl(java.lang.reflect.Type, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/initializer">initializer</span><span class="symbol">:</span>&nbsp;<a href="../-code-expression.html"><span class="identifier">CodeExpression</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$variableDecl(java.lang.reflect.Type, kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/final">final</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">fun </span><span class="identifier">variableDecl</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$variableDecl(kotlin.reflect.KClass((kotlin.Any)), kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/type">type</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$variableDecl(kotlin.reflect.KClass((kotlin.Any)), kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$variableDecl(kotlin.reflect.KClass((kotlin.Any)), kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/initializer">initializer</span><span class="symbol">:</span>&nbsp;<a href="../-code-expression.html"><span class="identifier">CodeExpression</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$variableDecl(kotlin.reflect.KClass((kotlin.Any)), kotlin.String, com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Boolean)/final">final</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;false<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="while-decl.html">whileDecl</a></h4>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">whileDecl</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$whileDecl(com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/condition">condition</span><span class="symbol">:</span>&nbsp;<a href="../-code-expression.html"><span class="identifier">CodeExpression</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$whileDecl(com.mostlycertain.javapoetdsl.CodeExpression, kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="../-code-func.html"><span class="identifier">CodeFunc</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">fun </span><span class="identifier">whileDecl</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$whileDecl(kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/format">format</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$whileDecl(kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$whileDecl(kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="../-code-func.html"><span class="identifier">CodeFunc</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="../-constructor-code-builder/index.html">ConstructorCodeBuilder</a></h4>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">ConstructorCodeBuilder</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">CodeBuilder</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="../-method-code-builder/index.html">MethodCodeBuilder</a></h4>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">MethodCodeBuilder</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">CodeBuilder</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

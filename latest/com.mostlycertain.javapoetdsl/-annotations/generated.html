@@ -1,0 +1,29 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Annotations.generated - javapoet-dsl</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">javapoet-dsl</a>&nbsp;/&nbsp;<a href="../index.html">com.mostlycertain.javapoetdsl</a>&nbsp;/&nbsp;<a href="index.html">Annotations</a>&nbsp;/&nbsp;<a href="./generated.html">generated</a><br/>
+<br/>
+<h1>generated</h1>
+<a name="com.mostlycertain.javapoetdsl.Annotations$generated(kotlin.String, java.time.Instant, kotlin.String, com.mostlycertain.javapoetdsl.JavaVersion)"></a>
+<code><span class="keyword">fun </span><span class="identifier">generated</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.Annotations$generated(kotlin.String, java.time.Instant, kotlin.String, com.mostlycertain.javapoetdsl.JavaVersion)/generatorName">generatorName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.Annotations$generated(kotlin.String, java.time.Instant, kotlin.String, com.mostlycertain.javapoetdsl.JavaVersion)/generatedAt">generatedAt</span><span class="symbol">:</span>&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html"><span class="identifier">Instant</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.Annotations$generated(kotlin.String, java.time.Instant, kotlin.String, com.mostlycertain.javapoetdsl.JavaVersion)/comments">comments</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a>&nbsp;<span class="symbol">=</span>&nbsp;""<span class="symbol">, </span><span class="identifier" id="com.mostlycertain.javapoetdsl.Annotations$generated(kotlin.String, java.time.Instant, kotlin.String, com.mostlycertain.javapoetdsl.JavaVersion)/targetVersion">targetVersion</span><span class="symbol">:</span>&nbsp;<a href="../-java-version/index.html"><span class="identifier">JavaVersion</span></a>&nbsp;<span class="symbol">=</span>&nbsp;JavaVersion.VERSION_1_9<span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AnnotationSpec</span></code>
+<p>Build an annotation that marks a type as generated.</p>
+<p>The resulting annotation is
+<a href="https://docs.oracle.com/javase/8/docs/api/javax/annotation/Generated.html">javax.annotation.Generated</a>
+for java versions &lt;= 8 and
+<a href="https://docs.oracle.com/javase/9/docs/api/javax/annotation/processing/Generated.html">javax.annotation.processing.Generated</a>
+for java versions &gt;= 9.</p>
+<h3>Parameters</h3>
+<p><a name="generatorName"></a>
+<code>generatorName</code> - Fully qualified name of the code generator.</p>
+<p><a name="generatedAt"></a>
+<code>generatedAt</code> - Date and time when the code was generated.</p>
+<p><a name="comments"></a>
+<code>comments</code> - Any comments that the code generator may want to include in the generated code.</p>
+<p><a name="targetVersion"></a>
+<code>targetVersion</code> - Java version to generate the annotation for</p>
+</BODY>
+</HTML>

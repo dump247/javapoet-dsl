@@ -1,0 +1,36 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CodeBuilder.tryDecl - javapoet-dsl</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">javapoet-dsl</a>&nbsp;/&nbsp;<a href="../index.html">com.mostlycertain.javapoetdsl</a>&nbsp;/&nbsp;<a href="index.html">CodeBuilder</a>&nbsp;/&nbsp;<a href="./try-decl.html">tryDecl</a><br/>
+<br/>
+<h1>tryDecl</h1>
+<a name="com.mostlycertain.javapoetdsl.CodeBuilder$tryDecl(kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))"></a>
+<code><span class="keyword">fun </span><span class="identifier">tryDecl</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.CodeBuilder$tryDecl(kotlin.Function1((com.mostlycertain.javapoetdsl.CodeBuilder, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="../-code-func.html"><span class="identifier">CodeFunc</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TryFlow</span></code>
+<p>Render a try-catch block.</p>
+<p>A "catch" and "finally" can be declared by chaining calls to the returned <a href="-try-flow/index.html">TryFlow</a>.</p>
+<p>Example:
+     tryDecl {
+         s("foo()")
+     }.catchDecl(IllegalArgumentException::class, "ex") {
+         s("bar()")
+     }.catchDecl(types(NullPointerException::class, IllegalStateException::class), "ex") {
+         s("bar()")
+     }.finallyDecl {
+         s("cleanup()")
+     }</p>
+<pre><code>    // -- Result --
+    // try {
+    //   foo();
+    // } catch (final IllegalArgumentException ex) {
+    //   bar();
+    // } catch (final NullPointerException | IllegalStateException ex) {
+    //   bar();
+    // } finally {
+    //   cleanup();
+    // }</code></pre>
+</BODY>
+</HTML>
