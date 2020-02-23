@@ -46,6 +46,11 @@ tasks.dokka {
     }
 }
 
+tasks.register<Exec>("publishLatestJavadoc") {
+    dependsOn("dokka")
+    commandLine("./publish-javadoc.sh")
+}
+
 val dokkaJar by tasks.creating(Jar::class) {
     group = JavaBasePlugin.DOCUMENTATION_GROUP
     archiveClassifier.set("javadoc")
