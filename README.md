@@ -21,6 +21,10 @@ interpolation.
 
 The DSL makes use of `this` context objects to define code blocks.
 
+# Documentation
+
+* [Latest Javadocs](https://dump247.github.io/javapoet-dsl/latest/index.html)
+
 # Examples
 
 ## Code Snippet
