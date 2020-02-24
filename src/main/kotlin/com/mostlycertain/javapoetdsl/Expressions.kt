@@ -246,8 +246,6 @@ private fun combineExpressions(
 /**
  * Join a series of expressions with a logical "and" operator (&&).
  *
- * Null values in [expressions] are ignored.
- *
  * @param expressions expressions to join
  * @throws IllegalArgumentException if [expressions] is empty
  */
@@ -255,8 +253,6 @@ fun logicalAnd(expressions: List<CodeExpression>): CodeExpression = combineExpre
 
 /**
  * Join a series of expressions with a logical "and" operator (&&).
- *
- * Null values in [expressions] are ignored.
  *
  * @param expressions expressions to join
  * @throws IllegalArgumentException if [expressions] is empty
@@ -266,8 +262,6 @@ fun logicalAnd(vararg expressions: CodeExpression): CodeExpression = combineExpr
 /**
  * Join a series of expressions with a logical "or" operator (||).
  *
- * Null values in [expressions] are ignored.
- *
  * @param expressions expressions to join
  * @throws IllegalArgumentException if [expressions] is empty
  */
@@ -275,8 +269,6 @@ fun logicalOr(expressions: List<CodeExpression>): CodeExpression = combineExpres
 
 /**
  * Join a series of expressions with a logical "or" operator (||).
- *
- * Null values in [expressions] are ignored.
  *
  * @param expressions expressions to join
  * @throws IllegalArgumentException if [expressions] is empty
@@ -286,8 +278,6 @@ fun logicalOr(vararg expressions: CodeExpression): CodeExpression = combineExpre
 /**
  * Join a series of expressions with a binary "or" operator (|).
  *
- * Null values in [expressions] are ignored.
- *
  * @param expressions expressions to join
  * @throws IllegalArgumentException if [expressions] is empty
  */
@@ -295,8 +285,6 @@ fun binaryOr(expressions: List<CodeExpression>): CodeExpression = combineExpress
 
 /**
  * Join a series of expressions with a binary "or" operator (|).
- *
- * Null values in [expressions] are ignored.
  *
  * @param expressions expressions to join
  * @throws IllegalArgumentException if [expressions] is empty
