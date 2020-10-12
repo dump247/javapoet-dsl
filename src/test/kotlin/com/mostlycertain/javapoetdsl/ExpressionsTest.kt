@@ -132,4 +132,23 @@ class ExpressionsTest {
                         context = "method",
                         parameters = listOf(literal(17), literal("a string value"), literal(1.0), literal(10))))
     }
+
+    @Test
+    fun `expression block`() {
+        assertAll(
+                { assertEquals(emptyExpression(), expression { }) },
+                { assertEquals(e("method()"), expression { write("method()") }) },
+                { assertEquals(e("Type.method()\n.other()\n.build()"), expression { writeln("Type.method()"); writeln(".other()"); write(".build()") }) },
+                { assertEquals(e("Type.method()\n  .other()\n  .build()"), expression { writeln("Type.method()"); indent { writeln(".other()"); write(".build()") } }) }
+        )
+    }
+
+    @Test
+    fun `expression lines list`() {
+        assertAll(
+                { assertEquals(emptyExpression(), expression(emptyList())) },
+                { assertEquals(e("Type.method()"), expression(e("Type.method()"))) },
+                { assertEquals(e("Type.method()\n  .other()\n  .build()"), expression(e("Type.method()"), e(".other()"), e(".build()"))) }
+        )
+    }
 }

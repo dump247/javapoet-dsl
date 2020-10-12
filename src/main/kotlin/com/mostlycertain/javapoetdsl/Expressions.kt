@@ -2,6 +2,7 @@ package com.mostlycertain.javapoetdsl
 
 import com.mostlycertain.javapoetdsl.Format.normalizeFormat
 import com.mostlycertain.javapoetdsl.Format.transformArgs
+import com.squareup.javapoet.ClassName
 import com.squareup.javapoet.CodeBlock
 import com.squareup.javapoet.TypeName
 import kotlin.reflect.KClass
@@ -314,6 +315,118 @@ fun expression(format: String, vararg args: Any): CodeExpression {
  * Short alias for [expression].
  */
 fun e(format: String, vararg args: Any) = expression(format, *args)
+
+class ExpressionBuilder(private val code: CodeBlock.Builder) {
+    /**
+     * Add some code snippet to the expression.
+     */
+    fun write(format: String, vararg args: Any) {
+        write(expression(format, *args))
+    }
+
+    /**
+     * Add some code snippet to the expression.
+     */
+    fun write(expression: CodeExpression) {
+        code.add(expression.toCodeBlock())
+    }
+
+    /**
+     * Add some code snippet to the expression followed by a line break.
+     */
+    fun writeln(format: String, vararg args: Any) = writeln(expression(format, *args))
+
+    /**
+     * Add some code snippet to the expression followed by a line break.
+     */
+    fun writeln(expression: CodeExpression) {
+        write(expression)
+        code.add("\n")
+    }
+
+    /**
+     * Add a blank line.
+     */
+    fun writeln() {
+        code.add("\n")
+    }
+
+    /**
+     * Increase the indent level of the expression.
+     */
+    fun indent(block: ExpressionBuilder.() -> Unit) {
+        code.indent()
+        this.block()
+        code.unindent()
+    }
+}
+
+/**
+ * Build a java code expression.
+ *
+ * Example of calling a builder:
+ *
+ * expression {
+ *   writeln("%T.builder()", BuilderClass);
+ *
+ *   indent {
+ *     writeln(".foo(%L)", fooValue)
+ *     writeln(".bar(%L)", barValue)
+ *     write(".build()")
+ *   }
+ * }
+ */
+fun expression(block: ExpressionBuilder.() -> Unit): CodeExpression {
+    val codeBlock = CodeBlock.builder()
+    val builder = ExpressionBuilder(codeBlock)
+    builder.block()
+
+    if (codeBlock.isEmpty) {
+        return emptyExpression()
+    }
+
+    return codeBlock.buildExpression()
+}
+
+/**
+ * Build an expression where all the lines after the first are indented.
+ *
+ * Example:
+ *
+ * expression(
+ *   e("%T.builder()", BuilderClass),
+ *   e(".foo(%L)", fooValue),
+ *   e(".bar(%L)", barValue),
+ *   e(".build()"),
+ * )
+ */
+fun expression(vararg lines: CodeExpression): CodeExpression = expression(lines.toList())
+
+/**
+ * Build an expression where all the lines after the first are indented.
+ *
+ * Example:
+ *
+ * expression(
+ *   e("%T.builder()", BuilderClass),
+ *   e(".foo(%L)", fooValue),
+ *   e(".bar(%L)", barValue),
+ *   e(".build()"),
+ * )
+ */
+fun expression(lines: List<CodeExpression>): CodeExpression {
+    if (lines.isEmpty()) {
+        return emptyExpression()
+    } else if (lines.size == 1) {
+        return lines[0]
+    }
+
+    return expression {
+        write(lines[0])
+
+        indent { lines.drop(1).forEach { writeln(); write(it) } }
+    }
+}
 
 fun emptyExpression(): CodeExpression = EmptyExpression
 
