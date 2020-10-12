@@ -91,6 +91,13 @@
 </tr>
 <tr>
 <td>
+<h4><a href="-expression-builder/index.html">ExpressionBuilder</a></h4>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">ExpressionBuilder</span></code></td>
+</tr>
+<tr>
+<td>
 <h4><a href="-format/index.html">Format</a></h4>
 </td>
 <td>
@@ -247,7 +254,12 @@
 </td>
 <td>
 <p>Format java code as an expression.</p>
-<code><span class="keyword">fun </span><span class="identifier">expression</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl$expression(kotlin.String, kotlin.Array((kotlin.Any)))/format">format</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="com.mostlycertain.javapoetdsl$expression(kotlin.String, kotlin.Array((kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="-code-expression.html"><span class="identifier">CodeExpression</span></a></code></td>
+<code><span class="keyword">fun </span><span class="identifier">expression</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl$expression(kotlin.String, kotlin.Array((kotlin.Any)))/format">format</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="com.mostlycertain.javapoetdsl$expression(kotlin.String, kotlin.Array((kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="-code-expression.html"><span class="identifier">CodeExpression</span></a></code>
+<p>Build a java code expression.</p>
+<code><span class="keyword">fun </span><span class="identifier">expression</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl$expression(kotlin.Function1((com.mostlycertain.javapoetdsl.ExpressionBuilder, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="-expression-builder/index.html"><span class="identifier">ExpressionBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="-code-expression.html"><span class="identifier">CodeExpression</span></a></code>
+<p>Build an expression where all the lines after the first are indented.</p>
+<code><span class="keyword">fun </span><span class="identifier">expression</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="com.mostlycertain.javapoetdsl$expression(kotlin.Array((com.mostlycertain.javapoetdsl.CodeExpression)))/lines">lines</span><span class="symbol">:</span>&nbsp;<a href="-code-expression.html"><span class="identifier">CodeExpression</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="-code-expression.html"><span class="identifier">CodeExpression</span></a></code><br/>
+<code><span class="keyword">fun </span><span class="identifier">expression</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl$expression(kotlin.collections.List((com.mostlycertain.javapoetdsl.CodeExpression)))/lines">lines</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><a href="-code-expression.html"><span class="identifier">CodeExpression</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="-code-expression.html"><span class="identifier">CodeExpression</span></a></code></td>
 </tr>
 <tr>
 <td>

@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ExpressionBuilder - javapoet-dsl</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">javapoet-dsl</a>&nbsp;/&nbsp;<a href="../index.html">com.mostlycertain.javapoetdsl</a>&nbsp;/&nbsp;<a href="./index.html">ExpressionBuilder</a><br/>
+<br/>
+<h1>ExpressionBuilder</h1>
+<code><span class="keyword">class </span><span class="identifier">ExpressionBuilder</span></code>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-init-.html">&lt;init&gt;</a></h4>
+</td>
+<td>
+<code><span class="identifier">ExpressionBuilder</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.ExpressionBuilder$<init>(com.squareup.javapoet.CodeBlock.Builder)/code">code</span><span class="symbol">:</span>&nbsp;<span class="identifier">Builder</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="indent.html">indent</a></h4>
+</td>
+<td>
+<p>Increase the indent level of the expression.</p>
+<code><span class="keyword">fun </span><span class="identifier">indent</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.ExpressionBuilder$indent(kotlin.Function1((com.mostlycertain.javapoetdsl.ExpressionBuilder, kotlin.Unit)))/block">block</span><span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">ExpressionBuilder</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="write.html">write</a></h4>
+</td>
+<td>
+<p>Add some code snippet to the expression.</p>
+<code><span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.ExpressionBuilder$write(kotlin.String, kotlin.Array((kotlin.Any)))/format">format</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="com.mostlycertain.javapoetdsl.ExpressionBuilder$write(kotlin.String, kotlin.Array((kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.ExpressionBuilder$write(com.mostlycertain.javapoetdsl.CodeExpression)/expression">expression</span><span class="symbol">:</span>&nbsp;<a href="../-code-expression.html"><span class="identifier">CodeExpression</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="writeln.html">writeln</a></h4>
+</td>
+<td>
+<p>Add some code snippet to the expression followed by a line break.</p>
+<code><span class="keyword">fun </span><span class="identifier">writeln</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.ExpressionBuilder$writeln(kotlin.String, kotlin.Array((kotlin.Any)))/format">format</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="com.mostlycertain.javapoetdsl.ExpressionBuilder$writeln(kotlin.String, kotlin.Array((kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">fun </span><span class="identifier">writeln</span><span class="symbol">(</span><span class="identifier" id="com.mostlycertain.javapoetdsl.ExpressionBuilder$writeln(com.mostlycertain.javapoetdsl.CodeExpression)/expression">expression</span><span class="symbol">:</span>&nbsp;<a href="../-code-expression.html"><span class="identifier">CodeExpression</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Add a blank line.</p>
+<code><span class="keyword">fun </span><span class="identifier">writeln</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
