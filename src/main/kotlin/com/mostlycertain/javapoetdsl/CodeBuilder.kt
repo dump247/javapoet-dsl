@@ -39,6 +39,38 @@ open class CodeBuilder(private val code: CodeBlock.Builder) {
     }
 
     /**
+     * Increase the current indentation level.
+     */
+    fun indent(block: CodeFunc) {
+        endCurrentFlow()
+
+        try {
+            code.indent()
+            this.block()
+        } finally {
+            code.unindent()
+        }
+    }
+
+    /**
+     * Write an arbitrary block of code.
+     */
+    fun write(format: String, vararg args: Any) = write(expression(format, *args).toCodeBlock())
+
+    /**
+     * Write an arbitrary block of code.
+     */
+    fun write(expression: CodeExpression) = write(expression.toCodeBlock())
+
+    /**
+     * Write an arbitrary block of code.
+     */
+    fun write(block: CodeBlock) {
+        endCurrentFlow()
+        code.add(block)
+    }
+
+    /**
      * Render a java statement.
      *
      * The provided code will have a semicolon and line break appended.

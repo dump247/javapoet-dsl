@@ -355,9 +355,12 @@ class ExpressionBuilder(private val code: CodeBlock.Builder) {
      * Increase the indent level of the expression.
      */
     fun indent(block: ExpressionBuilder.() -> Unit) {
-        code.indent()
-        this.block()
-        code.unindent()
+        try {
+            code.indent()
+            this.block()
+        } finally {
+            code.unindent()
+        }
     }
 }
 
