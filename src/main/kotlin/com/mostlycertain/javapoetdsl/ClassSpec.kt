@@ -121,6 +121,10 @@ class ClassSpecBuilder(
         return fieldSpec
     }
 
+    fun addField(fieldSpec: FieldSpec) {
+        spec.addField(fieldSpec)
+    }
+
     fun classDecl(
             name: String,
             modifiers: List<Modifier> = emptyList(),
@@ -147,6 +151,15 @@ class ClassSpecBuilder(
         val classSpec = classSpec(name, modifiers, annotations, implements, extends, block)
         spec.addType(classSpec.typeSpec)
         return classSpec
+    }
+
+    fun addType(typeSpec: TypeSpec) {
+        spec.addType(typeSpec)
+    }
+
+    fun addClass(classSpec: ClassSpec) {
+        check(classMeta.name == classSpec.className.enclosingClassName())
+        spec.addType(classSpec.typeSpec)
     }
 
     fun methodDecl(
@@ -206,6 +219,10 @@ class ClassSpecBuilder(
         val methodSpec = methodSpec(returns, name, parameters, modifiers, annotations, throws, varargs, body)
         spec.addMethod(methodSpec)
         return methodSpec
+    }
+
+    fun addMethod(methodSpec: MethodSpec) {
+        spec.addMethod(methodSpec)
     }
 
     fun constructorDecl(
