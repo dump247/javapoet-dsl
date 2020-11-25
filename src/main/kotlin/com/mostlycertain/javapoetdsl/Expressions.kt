@@ -14,16 +14,33 @@ import kotlin.reflect.KClass
  * @see [logicalAnd]
  * @see [expression]
  */
-interface CodeExpression : Format.JavaCodeBlock
+abstract class CodeExpression : Format.JavaCodeBlock {
+    open val isEmpty: Boolean get() = toCodeBlock().isEmpty
+    val isNotEmpty: Boolean get() = !isEmpty
+
+    override fun equals(other: Any?): Boolean = when {
+        other === this -> true
+        other !is CodeExpression -> false
+        else -> toCodeBlock().equals(other.toCodeBlock())
+    }
+
+    override fun hashCode(): Int {
+        return toCodeBlock().hashCode()
+    }
+
+    override fun toString(): String {
+        return toCodeBlock().toString()
+    }
+}
 
 /**
  * Expression wrapper around a single [CodeBlock].
  */
-internal data class CodeBlockExpression(private val code: CodeBlock) : CodeExpression {
+internal data class CodeBlockExpression(private val code: CodeBlock) : CodeExpression() {
     override fun toCodeBlock() = code
 }
 
-private object EmptyExpression : CodeExpression {
+private object EmptyExpression : CodeExpression() {
     val EMPTY_BLOCK: CodeBlock = CodeBlock.of("")
 
     override fun toCodeBlock() = EMPTY_BLOCK
@@ -157,7 +174,7 @@ private fun joinExpressions(
 /**
  * Series of expressions joined with a logical "or" operator (||).
  */
-private data class LogicalOrExpression(val expressions: List<CodeExpression>) : CodeExpression {
+private data class LogicalOrExpression(val expressions: List<CodeExpression>) : CodeExpression() {
     init {
         check(expressions.size > 1)
     }
@@ -167,6 +184,7 @@ private data class LogicalOrExpression(val expressions: List<CodeExpression>) : 
         private val LONG_OP = CodeBlock.of("\n|| ")
     }
 
+    override val isEmpty = false
     override fun toCodeBlock(): CodeBlock = joinExpressions(this.flatten(), SHORT_OP, LONG_OP)
 
     fun flatten(): Sequence<CodeExpression> {
@@ -184,7 +202,7 @@ private data class LogicalOrExpression(val expressions: List<CodeExpression>) : 
  *
  * @see [logicalAnd]
  */
-private data class LogicalAndExpression(val expressions: List<CodeExpression>) : CodeExpression {
+private data class LogicalAndExpression(val expressions: List<CodeExpression>) : CodeExpression() {
     init {
         check(expressions.size > 1)
     }
@@ -194,6 +212,7 @@ private data class LogicalAndExpression(val expressions: List<CodeExpression>) :
         private val LONG_OP = CodeBlock.of("\n&& ")
     }
 
+    override val isEmpty = false
     override fun toCodeBlock(): CodeBlock = joinExpressions(this.flatten(), SHORT_OP, LONG_OP)
 
     fun flatten(): Sequence<CodeExpression> {
@@ -211,7 +230,7 @@ private data class LogicalAndExpression(val expressions: List<CodeExpression>) :
  *
  * @see [binaryOr]
  */
-private data class BinaryOrExpression(val expressions: List<CodeExpression>) : CodeExpression {
+private data class BinaryOrExpression(val expressions: List<CodeExpression>) : CodeExpression() {
     init {
         check(expressions.size > 1)
     }
@@ -221,6 +240,7 @@ private data class BinaryOrExpression(val expressions: List<CodeExpression>) : C
         private val LONG_OP = CodeBlock.of("\n| ")
     }
 
+    override val isEmpty = false
     override fun toCodeBlock(): CodeBlock = joinExpressions(this.flatten(), SHORT_OP, LONG_OP)
 
     fun flatten(): Sequence<CodeExpression> {

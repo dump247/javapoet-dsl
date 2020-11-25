@@ -10,6 +10,8 @@ import java.nio.file.Path
 import java.nio.file.Paths
 import kotlin.reflect.KClass
 
+val CodeBlock.isNotEmpty: Boolean get() = !this.isEmpty
+
 fun CodeBlock.toExpression(): CodeExpression = CodeBlockExpression(this)
 
 fun CodeBlock.Builder.buildExpression(): CodeExpression = this.build().toExpression()
