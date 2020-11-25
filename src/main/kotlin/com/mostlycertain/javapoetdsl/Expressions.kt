@@ -470,3 +470,98 @@ fun literal(value: Boolean) = when (value) {
     true -> expression("true")
     false -> expression("false")
 }
+
+/**
+ * Render a lambda function.
+ *
+ * The lambda is always rendered with parens around the parameters. The result looks like this:
+ *
+ * ```java
+ * (<parameterNames>) -> {
+ *     <block>
+ * }
+ * ```
+ *
+ * NOTE: A line break is NOT rendered after the closing curly brace.
+ *
+ * @param parameterNames Ordered list of parameter names for the lambda.
+ * @param block Function to render the body of the lambda.
+ */
+fun lambda(vararg parameterNames: String, block: CodeFunc) = lambda(parameterNames.toList(), block)
+
+/**
+ * Render a lambda function.
+ *
+ * The lambda is always rendered with parens around the parameters. The result looks like this:
+ *
+ * ```java
+ * (<parameterNames>) -> {
+ *     <block>
+ * }
+ * ```
+ *
+ * NOTE: A line break is NOT rendered after the closing curly brace.
+ *
+ * @param parameterNames Ordered list of parameter names for the lambda.
+ * @param block Function to render the body of the lambda.
+ */
+fun lambda(parameterNames: List<String>, block: CodeFunc): CodeExpression {
+    return codeBlock() {
+        lambdaDecl(parameterNames, block)
+    }.toExpression()
+}
+
+/**
+ * Render a lambda function with a single expression and no curly braces.
+ *
+ * The lambda is always rendered with parens around the parameters. The result looks like this:
+ *
+ * ```java
+ * (<parameterNames>) -> <expression>
+ * ```
+ *
+ * NOTE: A line break is NOT rendered after the expression.
+ *
+ * @param parameterNames Ordered list of parameter names for the lambda.
+ * @param expression Expression that produces the lambda result.
+ */
+fun lambda(parameterNames: List<String>, expression: CodeExpression): CodeExpression {
+    return codeBlock() {
+        lambdaDecl(parameterNames, expression)
+    }.toExpression()
+}
+
+/**
+ * Render a lambda function with a single expression and no curly braces.
+ *
+ * The lambda is always rendered with parens around the parameters. The result looks like this:
+ *
+ * ```java
+ * (<parameterNames>) -> <expression>
+ * ```
+ *
+ * NOTE: A line break is NOT rendered after the expression.
+ *
+ * @param parameterNames Ordered list of parameter names for the lambda.
+ * @param expression Expression that produces the lambda result.
+ */
+fun lambda(vararg parameterNames: String, expression: CodeExpression) = lambda(parameterNames.toList(), expression)
+
+/**
+ * Render a lambda function with a single expression and no curly braces or parameters.
+ *
+ * The result looks like this:
+ *
+ * ```java
+ * () -> <expression>
+ * ```
+ *
+ * NOTE: A line break is NOT rendered after the expression.
+ *
+ * @param expression Expression that produces the lambda result.
+ */
+fun lambda(expression: CodeExpression): CodeExpression {
+    return codeBlock() {
+        lambdaDecl(expression)
+    }.toExpression()
+}

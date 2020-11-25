@@ -53,6 +53,103 @@ open class CodeBuilder(private val code: CodeBlock.Builder) {
     }
 
     /**
+     * Render a lambda function.
+     *
+     * The lambda is always rendered with parens around the parameters. The result looks like this:
+     *
+     * ```java
+     * (<parameterNames>) -> {
+     *     <block>
+     * }
+     * ```
+     *
+     * NOTE: A line break is NOT rendered after the closing curly brace.
+     *
+     * @param parameterNames Ordered list of parameter names for the lambda.
+     * @param block Function to render the body of the lambda.
+     */
+    fun lambdaDecl(vararg parameterNames: String, block: CodeFunc) {
+        lambdaDecl(parameterNames.toList(), block)
+    }
+
+    /**
+     * Render a lambda function.
+     *
+     * The lambda is always rendered with parens around the parameters. The result looks like this:
+     *
+     * ```java
+     * (<parameterNames>) -> {
+     *     <block>
+     * }
+     * ```
+     *
+     * NOTE: A line break is NOT rendered after the closing curly brace.
+     *
+     * @param parameterNames Ordered list of parameter names for the lambda.
+     * @param block Function to render the body of the lambda.
+     */
+    fun lambdaDecl(parameterNames: List<String>, block: CodeFunc) {
+        write("(%L) -> {\n", parameterNames.joinToString(", "))
+
+        indent(block)
+
+        this.write("}")
+    }
+
+    /**
+     * Render a lambda function with a single expression and no curly braces.
+     *
+     * The lambda is always rendered with parens around the parameters. The result looks like this:
+     *
+     * ```java
+     * (<parameterNames>) -> <expression>
+     * ```
+     *
+     * NOTE: A line break is NOT rendered after the expression.
+     *
+     * @param parameterNames Ordered list of parameter names for the lambda.
+     * @param expression Expression that produces the lambda result.
+     */
+    fun lambdaDecl(vararg parameterNames: String, expression: CodeExpression) {
+        lambdaDecl(parameterNames.toList(), expression)
+    }
+
+    /**
+     * Render a lambda function with a single expression and no curly braces.
+     *
+     * The lambda is always rendered with parens around the parameters. The result looks like this:
+     *
+     * ```java
+     * (<parameterNames>) -> <expression>
+     * ```
+     *
+     * NOTE: A line break is NOT rendered after the expression.
+     *
+     * @param parameterNames Ordered list of parameter names for the lambda.
+     * @param expression Expression that produces the lambda result.
+     */
+    fun lambdaDecl(parameterNames: List<String>, expression: CodeExpression) {
+        write("(%L) -> %L", parameterNames.joinToString(", "), expression)
+    }
+
+    /**
+     * Render a lambda function with a single expression and no parameters or curly braces.
+     *
+     * The result looks like this:
+     *
+     * ```java
+     * () -> <expression>
+     * ```
+     *
+     * NOTE: A line break is NOT rendered after the expression.
+     *
+     * @param expression Expression that produces the lambda result.
+     */
+    fun lambdaDecl(expression: CodeExpression) {
+        write("() -> %L", expression)
+    }
+
+    /**
      * Write an arbitrary block of code.
      */
     fun write(format: String, vararg args: Any) = write(expression(format, *args).toCodeBlock())
@@ -87,8 +184,19 @@ open class CodeBuilder(private val code: CodeBlock.Builder) {
      * @see [s]
      */
     fun statementDecl(expression: CodeExpression) {
+        statementDecl(expression.toCodeBlock())
+    }
+
+    /**
+     * Render a java statement.
+     *
+     * The provided code will have a semicolon and line break appended.
+     *
+     * @see [s]
+     */
+    fun statementDecl(block: CodeBlock) {
         endCurrentFlow()
-        code.addStatement(expression.toCodeBlock())
+        code.addStatement(block)
     }
 
     /**
@@ -100,6 +208,11 @@ open class CodeBuilder(private val code: CodeBlock.Builder) {
      * Short alias for [statementDecl].
      */
     fun s(expression: CodeExpression) = statementDecl(expression)
+
+    /**
+     * Short alias for [statementDecl].
+     */
+    fun s(block: CodeBlock) = statementDecl(block)
 
     /**
      * Declare a variable.

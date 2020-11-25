@@ -35,4 +35,85 @@ class CodeBuilderTest {
 
         """.trimIndent(), block.toString())
     }
+
+    @Test
+    fun `lambdaDecl with block and no parameters`() {
+        val block = codeBlock {
+            lambdaDecl {
+                s("return 1")
+            }
+        }
+
+        assertEquals("""
+            () -> {
+              return 1;
+            }
+        """.trimIndent(), block.toString())
+    }
+
+    @Test
+    fun `lambdaDecl with block and one parameter`() {
+        val block = codeBlock {
+            lambdaDecl("param1") {
+                s("return 1")
+            }
+        }
+
+        assertEquals("""
+            (param1) -> {
+              return 1;
+            }
+        """.trimIndent(), block.toString())
+    }
+
+    @Test
+    fun `lambdaDecl with block and multiple parameters`() {
+        val block = codeBlock {
+            lambdaDecl("param1", "param2", "param3", "param4", "param5") {
+                s("return 1")
+            }
+        }
+
+        assertEquals("""
+            (param1, param2, param3, param4, param5) -> {
+              return 1;
+            }
+        """.trimIndent(), block.toString())
+    }
+
+    @Test
+    fun `lambdaDecl with expression and no parameters`() {
+        val block = codeBlock {
+            lambdaDecl(literal("hi"))
+            write("\n")
+            lambdaDecl(parameterNames = *emptyArray(), expression = literal(17))
+        }
+
+        assertEquals("""
+            () -> "hi"
+            () -> 17
+        """.trimIndent(), block.toString())
+    }
+
+    @Test
+    fun `lambdaDecl with expression and one parameter`() {
+        val block = codeBlock {
+            lambdaDecl("param1", expression = literal(17))
+        }
+
+        assertEquals("""
+            (param1) -> 17
+        """.trimIndent(), block.toString())
+    }
+
+    @Test
+    fun `lambdaDecl with expression and multiple parameters`() {
+        val block = codeBlock {
+            lambdaDecl("param1", "param2", "param3", "param4", "param5", expression = literal(17))
+        }
+
+        assertEquals("""
+            (param1, param2, param3, param4, param5) -> 17
+        """.trimIndent(), block.toString())
+    }
 }
