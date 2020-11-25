@@ -12,7 +12,7 @@ import kotlin.reflect.KClass
 
 val CodeBlock.isNotEmpty: Boolean get() = !this.isEmpty
 
-fun CodeBlock.toExpression(): CodeExpression = CodeBlockExpression(this)
+fun CodeBlock.toExpression(): CodeExpression = if (isEmpty) emptyExpression() else CodeBlockExpression(this)
 
 fun CodeBlock.Builder.buildExpression(): CodeExpression = this.build().toExpression()
 
