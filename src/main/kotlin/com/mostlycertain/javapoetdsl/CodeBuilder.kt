@@ -200,6 +200,17 @@ open class CodeBuilder(private val code: CodeBlock.Builder) {
     }
 
     /**
+     * Render a java statement.
+     *
+     * The provided code will have a semicolon and line break appended.
+     *
+     * @see [s]
+     */
+    fun statementDecl(block: CodeFunc) {
+        statementDecl(codeBlock(block))
+    }
+
+    /**
      * Short alias for [statementDecl].
      */
     fun s(format: String, vararg args: Any) = statementDecl(expression(format, *args))
@@ -213,6 +224,11 @@ open class CodeBuilder(private val code: CodeBlock.Builder) {
      * Short alias for [statementDecl].
      */
     fun s(block: CodeBlock) = statementDecl(block)
+
+    /**
+     * Short alias for [statementDecl].
+     */
+    fun s(block: CodeFunc) = statementDecl(block)
 
     /**
      * Declare a variable.
