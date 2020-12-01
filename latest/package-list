@@ -8,6 +8,7 @@ $dokka.location:com.mostlycertain.javapoetdsl$get(com.squareup.javapoet.ClassNam
 $dokka.location:com.mostlycertain.javapoetdsl$get(com.squareup.javapoet.ClassName, kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))))com.mostlycertain.javapoetdsl/com.squareup.javapoet.-class-name/get.html
 $dokka.location:com.mostlycertain.javapoetdsl$isNested#com.squareup.javapoet.ClassNamecom.mostlycertain.javapoetdsl/com.squareup.javapoet.-class-name/is-nested.html
 $dokka.location:com.mostlycertain.javapoetdsl$isNotEmpty#com.squareup.javapoet.CodeBlockcom.mostlycertain.javapoetdsl/com.squareup.javapoet.-code-block/is-not-empty.html
+$dokka.location:com.mostlycertain.javapoetdsl$isNotPrimitive#com.squareup.javapoet.TypeNamecom.mostlycertain.javapoetdsl/com.squareup.javapoet.-type-name/is-not-primitive.html
 $dokka.location:com.mostlycertain.javapoetdsl$toExpression(com.squareup.javapoet.CodeBlock)com.mostlycertain.javapoetdsl/com.squareup.javapoet.-code-block/to-expression.html
 $dokka.location:com.mostlycertain.javapoetdsl$toFilePath(com.squareup.javapoet.ClassName)com.mostlycertain.javapoetdsl/com.squareup.javapoet.-class-name/to-file-path.html
 $dokka.location:com.mostlycertain.javapoetdsl$writeToString(com.squareup.javapoet.JavaFile)com.mostlycertain.javapoetdsl/com.squareup.javapoet.-java-file/write-to-string.html
