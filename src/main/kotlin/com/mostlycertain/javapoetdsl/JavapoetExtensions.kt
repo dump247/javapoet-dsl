@@ -16,6 +16,8 @@ fun CodeBlock.toExpression(): CodeExpression = if (isEmpty) emptyExpression() el
 
 fun CodeBlock.Builder.buildExpression(): CodeExpression = this.build().toExpression()
 
+val TypeName.isNotPrimitive: Boolean get() = !this.isPrimitive
+
 /**
  * If the type is primitive (e.g. int, char), return the boxed type (e.g. Integer, Character).
  * Otherwise, return `this`.
