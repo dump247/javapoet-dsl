@@ -88,11 +88,19 @@ object TypeNames {
 
     fun arrayType(componentType: TypeName): ArrayTypeName = ArrayTypeName.of(componentType)
 
+    fun genericType(rawType: KClass<*>, vararg typeArguments: KClass<*>): ParameterizedTypeName {
+        return genericType(className(rawType), *typeArguments)
+    }
+
     fun genericType(rawType: ClassName, vararg typeArguments: KClass<*>): ParameterizedTypeName {
         return ParameterizedTypeName.get(rawType, *typeArguments.map { of(it).ensureBoxed() }.toTypedArray())
     }
 
     fun genericType(rawType: ClassName, vararg typeArguments: TypeName): ParameterizedTypeName {
         return ParameterizedTypeName.get(rawType, *typeArguments.map { it.ensureBoxed() }.toTypedArray())
+    }
+
+    fun genericType(rawType: KClass<*>, vararg typeArguments: TypeName): ParameterizedTypeName {
+        return genericType(className(rawType), *typeArguments)
     }
 }
