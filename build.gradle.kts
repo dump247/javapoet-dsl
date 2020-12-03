@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.time.Duration
 
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
@@ -117,6 +118,8 @@ signing {
 nexusPublishing {
     repositories {
         sonatype()
+        connectTimeout.set(Duration.ofMinutes(5))
+        clientTimeout.set(Duration.ofMinutes(5))
     }
 }
 
